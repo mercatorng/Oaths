@@ -1,0 +1,37 @@
+<div class="main-bg">
+  <h1>Court App</h1>
+
+  <div class="sub-main">
+    <div class="user-bg">
+      <div class="top-content">
+        <img src="../../assets/img/undraw_profile_pic_ic5t.png" alt="user placeholder" />
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <p class="login-legend">
+          Login Here <span class="fa fa-hand-o-down"></span>
+        </p>
+        <div class="input">
+          <input type="email" placeholder="Email Address" name="email" required formControlName="email" />
+          <span class="fa fa-envelope"></span>
+          <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+            <div *ngIf="email?.errors.required">Email is required</div>
+
+          </div>
+        </div>
+        <div class="input">
+          <input type="password" placeholder="Password" name="password" required formControlName="password" />
+          <span class="fa fa-unlock"></span>
+          <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+            <div *ngIf="password?.errors.required">Password is required</div>
+            <div *ngIf="password?.errors?.shouldNotHaveSpaces">Password cannot contain space</div>
+
+          </div>
+        </div>
+        <button type="submit" class="submit button">
+          Login <span class="fa fa-sign-in"></span>
+        </button>
+      </form>
+      <a href="#" class="bottom-forgot">Forgot Password</a>
+    </div>
+  </div>
+</div>
