@@ -17,7 +17,7 @@ export class LoginValidators {
   static shouldBeUnique(
     control: AbstractControl
   ): Promise<ValidationErrors | null> {
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         if (control.value !== '') {
           resolve({ shouldBeUnique: true });
