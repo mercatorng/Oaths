@@ -12,6 +12,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LoginService } from '../services/login.service';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -26,15 +27,15 @@ export class AuthGuard implements CanActivate, CanActivateChild, CanLoad {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      const currentUser = this.loginService.currentUserValue;
-      if(currentUser) {
-        // user is authorised
-        return true;
-      }
+    const currentUser = this.loginService.currentUserValue;
+    if (currentUser) {
+      // user is authorised
+      return true;
+    }
 
-      // not authorised so redirect
-      this.router.navigate(['/login'], {queryParams: { returnUrl: state.url}});
-      return false;
+    // not authorised so redirect
+    this.router.navigate(['/'], { queryParams: { returnUrl: state.url } });
+    return false;
   }
   canActivateChild(
     next: ActivatedRouteSnapshot,

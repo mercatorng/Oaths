@@ -9,9 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { TemplatesModule } from './templates/templates.module';
+import { ErrorInterceptor } from './util/error.interceptor';
+import { EnvServiceProvider } from './services/env.service.provider';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './login/login.component';
@@ -22,6 +24,7 @@ import { AddrolesComponent } from './addroles/addroles.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { InstitutionComponent } from './institution/institution.component';
 import { ReportsComponent } from './reports/reports.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,10 @@ import { ReportsComponent } from './reports/reports.component';
     NgbModule,
     TemplatesModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    EnvServiceProvider
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

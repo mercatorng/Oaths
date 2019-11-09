@@ -14,6 +14,7 @@ import { AddrolesComponent } from './addroles/addroles.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { InstitutionComponent } from './institution/institution.component';
 import { ReportsComponent } from './reports/reports.component';
+import { AuthGuard } from './util/auth.guard';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
   {
     path: 'navigation',
     component: NavigationComponent,
+    canActivate: [AuthGuard],
     data: { title: 'Navigation Component' },
     children: [
       {
@@ -37,7 +39,7 @@ const routes: Routes = [
         data: { title: 'Dash' }
       },
       {
-        path: 'template',
+        path: 'document',
         component: AgeDeclarationComponent,
         data: { title: 'Age' }
       },
@@ -80,7 +82,8 @@ const routes: Routes = [
         path: 'reports',
         component: ReportsComponent,
         data: { title: 'Reports Component' }
-      }
+      },
+      { path: '**', redirectTo: '' }
     ]
   }
 ];
