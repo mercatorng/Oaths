@@ -1,0 +1,83 @@
+<button class="btn btn-lg btn-outline-primary mt-4 mr-4" (click)="open(content)" style="float:right">Create User</button>
+
+<div class="container">
+</div>
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title"><b>Create User</b></h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="createUserForm" (ngSubmit)="login()">
+                <div class="input">
+                        <input type="text" placeholder="First Name" name="firstName" required formControlName="firstName" />
+                        <div class="alert alert-danger" *ngIf="firstName.touched && firstName.invalid">
+                            <div *ngIf="firstName?.errors.required">First Name is required</div>        
+                        </div>
+                </div>
+                <div class="input">
+                        <input type="text" placeholder="Last Name" name="lastName" required formControlName="lastName" />
+                        <div class="alert alert-danger" *ngIf="lastName.touched && lastName.invalid">
+                            <div *ngIf="lastName?.errors.required">Last Name is required</div>        
+                        </div>
+                </div>
+                <div class="input">
+                        <input type="text" placeholder="User Name" name="userName" required formControlName="userName" />
+                        <div class="alert alert-danger" *ngIf="userName.touched && userName.invalid">
+                            <div *ngIf="userName?.errors.required">User Name is required</div>        
+                        </div>
+                </div>
+                <div class="input">
+                        <input type="text" placeholder="Phone No" name="phoneNo" required formControlName="phoneNo" />
+                        <div class="alert alert-danger" *ngIf="phoneNo.touched && phoneNo.invalid">
+                            <div *ngIf="phoneNo?.errors.required">Phone Number is required</div>        
+                        </div>
+                </div>
+                <div class="input">
+                        <input type="email" placeholder="Email Address" name="email" required formControlName="email" />
+                        <div class="alert alert-danger" *ngIf="email.touched && email.invalid">
+                          <div *ngIf="email?.errors.required">Email is required</div>
+              
+                        </div>
+                </div>
+                <div class="input">
+                        <input type="password" placeholder="Password" name="password" required formControlName="password" />
+                        <div class="alert alert-danger" *ngIf="password.touched && password.invalid">
+                          <div *ngIf="password?.errors.required">Password is required</div>
+                          <div *ngIf="password?.errors?.shouldNotHaveSpaces">Password cannot contain space</div>              
+                        </div>
+                </div>
+                <div class="input">
+                    <select formControlName="role">
+                        <option *ngFor="let role of roles">{{role.name}}</option>
+                    </select>
+                </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="createUser()">Save</button>
+    </div>
+</ng-template>
+
+<!-- <div *ngIf="!loading" class="table table-hover table-responsive" style="width:80%; margin:150px auto">
+    <table>
+      <tr>
+        <th>
+          S/N
+        </th>
+        <th>
+          Name
+        </th>
+        <th>
+        </th>
+      </tr>
+      <tr *ngFor="let user of users; index as i" (click)="open(editusermodal)" (click)="edituser(user)" style="cursor:pointer" >
+        <td>{{i+1}}</td>
+        <td>{{user.name}}</td>
+        <td style="width:80%; text-align:right"><i class="material-icons">create</i></td>
+      </tr>
+    </table>
+</div>
+<div class="loader mt-4" *ngIf="loading"></div> -->

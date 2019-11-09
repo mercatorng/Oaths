@@ -1,0 +1,27 @@
+<div class="container" *ngIf="!loading">
+    <button class="btn btn-lg btn-outline-primary mt-4 mr-4" (click)="editInstitution()" style="float:right"><i class="material-icons">create</i>Edit Institution</button>
+    <div style="width:150px; height:150px; margin:20px auto 50px auto">
+        <img [src]="institution?.logo2" height="150px" width="150px">
+    </div>
+    <form>
+        <div class="form-group">
+            <label for="name">Institution Name</label>
+            <input type="text" [disabled]="disableEdit" class="form-control" id="name" aria-describedby="emailHelp" 
+            placeholder="Enter Institution Name" 
+            [(ngModel)]="institution.name" 
+            [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+            <label for="address">Address</label>
+            <input type="text" [disabled]="disableEdit" class="form-control" id="address" placeholder="Enter Address" 
+            [(ngModel)]="institution.address" 
+            [ngModelOptions]="{standalone: true}">
+        </div>
+        <button type="submit" class="btn btn-primary" style="float:right" (click)="updateInstitution()">Submit</button>
+    </form>
+</div>
+
+<div class="loader" *ngIf="loading"></div>
+
+
+
