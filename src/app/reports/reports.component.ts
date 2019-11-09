@@ -1,16 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'app-reports',
-    templateUrl: './reports.component.html',
-    styleUrls: ['./reports.component.scss']
+  selector: 'app-reports',
+  templateUrl: './reports.component.html',
+  styleUrls: ['./reports.component.scss']
 })
 export class ReportsComponent implements OnInit {
-
-  constructor() {}
-
-  displayedColumns: string[] = ['id', 'type', 'status', 'registrar', 'date', ];
-
+  displayedColumns: string[] = ['id', 'type', 'status', 'registrar', 'date'];
   documents = [
     {
       id: 'FMH/11111',
@@ -47,10 +43,4 @@ export class ReportsComponent implements OnInit {
   public doughnutChartType = 'doughnut';
 
   ngOnInit() {}
-
-
-
-
-
 }
-
