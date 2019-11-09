@@ -11,6 +11,7 @@ import { User } from '../models/user';
 export class LoginService {
   private currentUserSubject: BehaviorSubject<User>;
   public currentUser: Observable<User>;
+  url = 'https://mercatoroathapi.azurewebsites.net/api';
   constructor(private http: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('currentUser'))
@@ -22,7 +23,7 @@ export class LoginService {
     return this.currentUserSubject.value;
   }
 
-  // login(username, password) {
-  //   return this.http.post<any>()
+  // login(obj) {
+  //   return this.http.post<any>(`${url}/User/Authenticate`, obj)
   // }
 }
