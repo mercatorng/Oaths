@@ -9,16 +9,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './material-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
-import { TemplatesModule } from './templates/templates.module';
-import { ErrorInterceptor } from './util/error.interceptor';
-import { EnvServiceProvider } from './services/env.service.provider';
+import { HttpClientModule } from '@angular/common/http';
+import { ChartsModule } from 'ng2-charts';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { RolesComponent } from './roles/roles.component';
 import { AddrolesComponent } from './addroles/addroles.component';
 import { CreateuserComponent } from './createuser/createuser.component';
@@ -32,7 +28,6 @@ import { MatTableModule } from '@angular/material/table';
     NavigationComponent,
     LoginComponent,
     HomeComponent,
-    DashboardComponent,
     RolesComponent,
     AddrolesComponent,
     CreateuserComponent,
@@ -49,12 +44,10 @@ import { MatTableModule } from '@angular/material/table';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule,
-    TemplatesModule
+    ChartsModule,
+    MatTableModule
   ],
-  providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
-    EnvServiceProvider
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
