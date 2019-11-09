@@ -117,7 +117,6 @@ section {
 }
 
 
-
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -181,4 +180,34 @@ table {
 
 .dash-list h3 {
   padding: 12px;
+}
+
+
+// global style for reusable button
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+
+}
+
+button.main {
+  transition: all 0.5s cubic-bezier(0.65, -0.25, 0.25, 1.95);
+  font-weight: 900;
+  color: #fff;
+  padding: 1.25rem 2rem;
+  background: #673AB7;
+  text-transform: uppercase;
+}
+
+button.main:hover,
+button.main:focus,
+button.main:active {
+  letter-spacing: 0.125rem;
 }

@@ -11,6 +11,7 @@ import { MaterialModule } from './material-module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ChartsModule } from 'ng2-charts';
+import { TemplatesModule } from './templates/templates.module';
 
 import { NavigationComponent } from './navigation/navigation.component';
 import { LoginComponent } from './login/login.component';
@@ -20,7 +21,8 @@ import { AddrolesComponent } from './addroles/addroles.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { InstitutionComponent } from './institution/institution.component';
 import { ReportsComponent } from './reports/reports.component';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {MatTableModule} from '@angular/material/table';
     AddrolesComponent,
     CreateuserComponent,
     InstitutionComponent,
-    ReportsComponent
+    ReportsComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,8 @@ import {MatTableModule} from '@angular/material/table';
     HttpClientModule,
     NgbModule,
     ChartsModule,
-    MatTableModule
+    MatTableModule,
+    TemplatesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
