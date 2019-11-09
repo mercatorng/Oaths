@@ -5,6 +5,7 @@ import { LoginValidators } from './../validators/login.validators';
 import { RolesService } from '../services/roles.service';
 import { Role } from '../models/role';
 import { LoginService } from '../services/login.service';
+import { User } from '../models/user';
 
 
 @Component({
@@ -16,11 +17,15 @@ export class CreateuserComponent implements OnInit {
 
   roles: Role[];
   createUserForm;
+  users:User[];
+  loading=true;
   constructor(
     private modalService: NgbModal,
     private roleService: RolesService,
     private loginService: LoginService
   ) { }
+
+  displayedColumns: string[] = ['id', 'name', 'username', 'email', 'phoneNo', 'role'];
 
   ngOnInit() {
     this.createUserForm = new FormGroup({
@@ -30,13 +35,15 @@ export class CreateuserComponent implements OnInit {
       phoneNo: new FormControl(''),
       role: new FormControl(),
       roleID: new FormControl(),
+      id: new FormControl(0),
       email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [
+      Password: new FormControl('', [
         Validators.required,
         LoginValidators.shouldNotHaveSpaces
       ])
     });
     this.getRoles();
+    this.getUsersByInstittutionId();
   }
 
   open(content) {
@@ -60,7 +67,7 @@ export class CreateuserComponent implements OnInit {
   }
 
   get password() {
-    return this.createUserForm.get('password');
+    return this.createUserForm.get('Password');
   }
 
   get email() {
@@ -79,6 +86,7 @@ export class CreateuserComponent implements OnInit {
   createUser() {
     this.createUserForm.value.institutionID = 1;
     this.createUserForm.value.roleID=this.roles.find(x=> {return x.name==this.createUserForm.value.role}).id
+    delete this.createUserForm.value.role
     console.log(this.createUserForm.value);
     this.loginService.createUser(this.createUserForm.value).subscribe(data => {
       console.log(data);
@@ -86,6 +94,17 @@ export class CreateuserComponent implements OnInit {
       err => {
         console.log(err);
     });
+  }
+
+  getUsersByInstittutionId(){
+    this.loginService.getUsers(1).subscribe(data=>{
+      this.users=<User[]>data
+      this.loading=false
+      console.log(data)
+    },
+      err=>{
+        console.log(err)
+    })
   }
 
 }

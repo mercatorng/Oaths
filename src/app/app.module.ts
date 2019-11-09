@@ -24,6 +24,7 @@ import { AddrolesComponent } from './addroles/addroles.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { InstitutionComponent } from './institution/institution.component';
 import { ReportsComponent } from './reports/reports.component';
+import { MatTableModule } from '@angular/material/table';
 
 @NgModule({
   declarations: [
