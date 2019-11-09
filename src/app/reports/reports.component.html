@@ -1,56 +1,45 @@
 <div class="container">
-    <div class="row mt-4">
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Total Document Generated</h3>
-                </div>
-                <div class="card-body">
-                    <h1>20</h1>
-                </div>
-                <div class="card-footer">
-                    footer
-                </div>
-            </div>
+  <div class="row mt-4">
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">
+          <h3>Total Document Generated</h3>
         </div>
-        <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                            <h3>Total Paid</h3>
-                        </div>
-                        <div class="card-body">
-                            <h1>10</h1>
-                        </div>
-                        <div class="card-footer">
-                            footer
-                    </div>
-                </div>
+        <div class="card-body">
+          <h1>20</h1>
         </div>
-        <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-header">
-                            <h3>Total Unpaid</h3>
-                        </div>
-                        <div class="card-body">
-                            <h1>10</h1>
-                        </div>
-                        <div class="card-footer">
-                            footer
-                    </div>
-                </div>
+        <div class="card-footer">
+          footer
         </div>
+      </div>
     </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">
+          <h3>Total Paid</h3>
+        </div>
+        <div class="card-body">
+          <h1>10</h1>
+        </div>
+        <div class="card-footer">
+          footer
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card">
+        <div class="card-header">
+          <h3>Total Unpaid</h3>
+        </div>
+        <div class="card-body">
+          <h1>10</h1>
+        </div>
+        <div class="card-footer">
+          footer
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div style="display: block">
-            <canvas mdbChart
-                [chartType]="chartType"
-                [datasets]="chartDatasets"
-                [labels]="chartLabels"
-                [colors]="chartColors"
-                [options]="chartOptions"
-                [legend]="true"
-                (chartHover)="chartHovered($event)"
-                (chartClick)="chartClicked($event)">
-            </canvas>
-    </div>
+
 </div>

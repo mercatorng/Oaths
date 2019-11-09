@@ -3,6 +3,9 @@
   Court App
   <span class="toolbar-spacer"></span>
   <mat-icon class="toolbar-icon" matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications</mat-icon>
+  <button class="menu-item ml-4" mat-flat-button (click)="logOut()">
+    Log Out
+  </button>
 </mat-toolbar>
 
 <mat-sidenav-container id="sidenavContainer" fullscreen>
@@ -12,8 +15,8 @@
         <mat-card-header>
           <div mat-card-avatar class="avatar"></div>
 
-          <mat-card-title>John Doe</mat-card-title>
-          <mat-card-subtitle>Internal</mat-card-subtitle>
+          <mat-card-title>{{user.firstName}}</mat-card-title>
+          <mat-card-subtitle>{{user.role.name}}</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
       <mat-list-item>
@@ -23,18 +26,40 @@
         </button>
       </mat-list-item>
 
-      <!-- <mat-list-item>
-          <button class="menu-item" mat-flat-button routerLink ="/navigation/template">
-            <mat-icon>work</mat-icon>
-           Template
-          </button>
-        </mat-list-item> -->
+      <mat-list-item>
+        <button class="menu-item" mat-flat-button (click)="openDropdown()" [ngStyle]="{'padding-left': '10px'}">
+          <mat-icon>work</mat-icon>
+          Admin
+          <span fxFlex></span>
+          <mat-icon [@indicatorRotate]="open ? 'open': 'collapsed'" [ngStyle]="{'font-size':'18px'}">
+            expand_more
+          </mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="open">
+        <button routerLink="createuser" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">group</mat-icon>
+          Create User
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="open">
+        <button routerLink="roles" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">group</mat-icon>
+          Roles
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="open">
+        <button routerLink="institution" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">location_city</mat-icon>
+          Institution
+        </button>
+      </mat-list-item>
 
       <mat-list-item *ngFor="let item of navItems">
-        <button [ngStyle]="{'padding-left':  '15px'}" (click)="onItemSelected(item)"
+        <button  (click)="onItemSelected(item)"
           [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}"
           class="menu-item" mat-flat-button>
-          <mat-icon class="routeIcon">{{item.iconName}}</mat-icon>
+          <mat-icon class="routeIcon ">{{item.iconName}}</mat-icon>
           {{item.displayName}}
           <span fxFlex *ngIf="item.children && item.children.length">
             <span fxFlex></span>
@@ -45,64 +70,42 @@
         </button>
       </mat-list-item>
       <mat-list-item *ngIf="expanded">
-        <button routerLink="/navigation/template" class="menu-item" mat-flat-button>
-          <mat-icon class="routeIcon">group</mat-icon>
+        <button routerLink="/navigation/document" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">recent_actors</mat-icon>
           Declaration of Age
         </button>
 
       </mat-list-item>
       <mat-list-item *ngIf="expanded">
         <button routerLink="/navigation/marriage" class="menu-item" mat-flat-button>
-          <mat-icon class="routeIcon">group</mat-icon>
+          <mat-icon class="routeIcon">recent_actors</mat-icon>
           Declaration of Marriage
         </button>
 
       </mat-list-item>
       <mat-list-item *ngIf="expanded">
         <button routerLink="/navigation/change-of-name" class="menu-item" mat-flat-button>
-          <mat-icon class="routeIcon">group</mat-icon>
+          <mat-icon class="routeIcon">recent_actors</mat-icon>
           Change of Name
         </button>
 
       </mat-list-item>
       <mat-list-item *ngIf="expanded">
         <button routerLink="/navigation/general" class="menu-item" mat-flat-button>
-          <mat-icon class="routeIcon">group</mat-icon>
+          <mat-icon class="routeIcon">recent_actors</mat-icon>
           General Form of Affidavit
         </button>
 
       </mat-list-item>
-
-
-
-
       <mat-list-item>
         <button class="menu-item" mat-flat-button>
           <mat-icon>work</mat-icon>
           Project
         </button>
       </mat-list-item>
-
-      <mat-list-item routerLink="roles">
-        <button class="menu-item" mat-flat-button>
-          Roles
-        </button>
-      </mat-list-item>
-
-      <mat-list-item routerLink="createuser">
-        <button class="menu-item" mat-flat-button>
-          Create User
-        </button>
-      </mat-list-item>
-
-      <mat-list-item routerLink="institution">
-        <button class="menu-item" mat-flat-button>
-          Institution
-        </button>
-      </mat-list-item>
-
       <mat-list-item routerLink="reports">
         <button class="menu-item" mat-flat-button>
+          <mat-icon>report</mat-icon>
           Reports
         </button>
       </mat-list-item>
@@ -114,7 +117,6 @@
         </button>
       </mat-list-item>
     </mat-list>
-
 
   </mat-sidenav>
 
