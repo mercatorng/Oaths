@@ -1,4 +1,4 @@
-<mat-toolbar id="mainToolbar" color="secondary">
+<mat-toolbar id="mainToolbar" color="primary">
   <mat-icon (click)="onToolbarMenuToggle()" id="toolbarMenu">subject</mat-icon>
   Court App
   <span class="toolbar-spacer"></span>
@@ -7,7 +7,6 @@
 
 <mat-sidenav-container id="sidenavContainer" fullscreen>
   <mat-sidenav mode="side" #sidenav id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" opened>
-
     <mat-list id="menus">
       <mat-card>
         <mat-card-header>
@@ -18,11 +17,68 @@
         </mat-card-header>
       </mat-card>
       <mat-list-item>
-        <button class="menu-item" mat-flat-button>
+        <button class="menu-item" mat-flat-button routerLink="/navigation/dashboard">
           <mat-icon>dashboard</mat-icon>
           Dashboard
         </button>
       </mat-list-item>
+
+      <!-- <mat-list-item>
+          <button class="menu-item" mat-flat-button routerLink ="/navigation/template">
+            <mat-icon>work</mat-icon>
+           Template
+          </button>
+        </mat-list-item> -->
+        
+        <mat-list-item *ngFor="let item of navItems">
+            <button [ngStyle]="{'padding-left':  '15px'}" (click)="onItemSelected(item)"
+            [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}"
+            class="menu-item"  mat-flat-button>
+           <mat-icon class="routeIcon">{{item.iconName}}</mat-icon>
+           {{item.displayName}}
+           <span fxFlex *ngIf="item.children && item.children.length" >
+              <span fxFlex></span>
+              <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'" [ngStyle]="{'font-size':'18px'}">
+                expand_more
+              </mat-icon>           
+            </span>       
+          </button>
+      </mat-list-item>
+         <mat-list-item *ngIf="expanded">
+          <button  routerLink ="/navigation/template"
+          class="menu-item"  mat-flat-button>
+          <mat-icon class="routeIcon">group</mat-icon>
+         Declaration of Age
+        </button>
+        
+    </mat-list-item>
+    <mat-list-item *ngIf="expanded">
+        <button  routerLink ="/navigation/marriage"
+        class="menu-item"  mat-flat-button>
+        <mat-icon class="routeIcon">group</mat-icon>
+       Declaration of Marriage
+      </button>
+      
+  </mat-list-item>
+  <mat-list-item *ngIf="expanded">
+      <button  routerLink ="/navigation/change-of-name"
+      class="menu-item"  mat-flat-button>
+      <mat-icon class="routeIcon">group</mat-icon>
+     Change of Name
+    </button>
+    
+</mat-list-item>
+<mat-list-item *ngIf="expanded">
+    <button  routerLink ="/navigation/general"
+    class="menu-item"  mat-flat-button>
+    <mat-icon class="routeIcon">group</mat-icon>
+   General Form of Affidavit
+  </button>
+  
+</mat-list-item>
+        
+   
+        
 
       <mat-list-item>
         <button class="menu-item" mat-flat-button>
@@ -37,11 +93,11 @@
           Settings
         </button>
       </mat-list-item>
-
     </mat-list>
   </mat-sidenav>
 
   <mat-sidenav-content [ngStyle]="{ 'margin-left.px': contentMargin }">
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
