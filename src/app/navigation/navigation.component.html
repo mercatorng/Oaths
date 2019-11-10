@@ -3,57 +3,112 @@
   Court App
   <span class="toolbar-spacer"></span>
   <mat-icon class="toolbar-icon" matBadge="8" matBadgePosition="after" matBadgeColor="accent">notifications</mat-icon>
+  <button class="menu-item ml-4" mat-flat-button (click)="logOut()">
+    Log Out
+  </button>
 </mat-toolbar>
 
 <mat-sidenav-container id="sidenavContainer" fullscreen>
   <mat-sidenav mode="side" #sidenav id="sidenav" [class.menu-open]="isMenuOpen" [class.menu-close]="!isMenuOpen" opened>
-
     <mat-list id="menus">
       <mat-card>
         <mat-card-header>
           <div mat-card-avatar class="avatar"></div>
 
-          <mat-card-title>John Doe</mat-card-title>
-          <mat-card-subtitle>Internal</mat-card-subtitle>
+          <mat-card-title>{{user.firstName}}</mat-card-title>
+          <mat-card-subtitle>{{user.role.name}}</mat-card-subtitle>
         </mat-card-header>
       </mat-card>
       <mat-list-item>
-        <button class="menu-item" mat-flat-button>
+        <button class="menu-item" mat-flat-button routerLink="/navigation/dashboard">
           <mat-icon>dashboard</mat-icon>
           Dashboard
         </button>
       </mat-list-item>
 
       <mat-list-item>
+        <button class="menu-item" mat-flat-button (click)="openDropdown()" [ngStyle]="{'padding-left': '10px'}">
+          <mat-icon>work</mat-icon>
+          Admin
+          <span fxFlex></span>
+          <mat-icon [@indicatorRotate]="open ? 'open': 'collapsed'" [ngStyle]="{'font-size':'18px'}">
+            expand_more
+          </mat-icon>
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="open">
+        <button routerLink="createuser" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">group</mat-icon>
+          Create User
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="open">
+        <button routerLink="roles" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">group</mat-icon>
+          Roles
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="open">
+        <button routerLink="institution" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">location_city</mat-icon>
+          Institution
+        </button>
+      </mat-list-item>
+
+      <mat-list-item *ngFor="let item of navItems">
+        <button  (click)="onItemSelected(item)"
+          [ngClass]="{'active': item.route ? router.isActive(item.route, true): false, 'expanded': expanded}"
+          class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon ">{{item.iconName}}</mat-icon>
+          {{item.displayName}}
+          <span fxFlex *ngIf="item.children && item.children.length">
+            <span fxFlex></span>
+            <mat-icon [@indicatorRotate]="expanded ? 'expanded': 'collapsed'" [ngStyle]="{'font-size':'18px'}">
+              expand_more
+            </mat-icon>
+          </span>
+        </button>
+      </mat-list-item>
+      <mat-list-item *ngIf="expanded">
+        <button routerLink="/navigation/document" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">recent_actors</mat-icon>
+          Declaration of Age
+        </button>
+
+      </mat-list-item>
+      <mat-list-item *ngIf="expanded">
+        <button routerLink="/navigation/marriage" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">recent_actors</mat-icon>
+          Declaration of Marriage
+        </button>
+
+      </mat-list-item>
+      <mat-list-item *ngIf="expanded">
+        <button routerLink="/navigation/change-of-name" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">recent_actors</mat-icon>
+          Change of Name
+        </button>
+
+      </mat-list-item>
+      <mat-list-item *ngIf="expanded">
+        <button routerLink="/navigation/general" class="menu-item" mat-flat-button>
+          <mat-icon class="routeIcon">recent_actors</mat-icon>
+          General Form of Affidavit
+        </button>
+
+      </mat-list-item>
+      <mat-list-item>
         <button class="menu-item" mat-flat-button>
           <mat-icon>work</mat-icon>
           Project
         </button>
       </mat-list-item>
-
-      <mat-list-item routerLink="roles">
-        <button class="menu-item" mat-flat-button>
-          Roles
-        </button>
-      </mat-list-item>
-
-      <mat-list-item routerLink="createuser">
-        <button class="menu-item" mat-flat-button>
-          Create User
-        </button>
-      </mat-list-item>
-
-      <mat-list-item routerLink="institution">
-        <button class="menu-item" mat-flat-button>
-          Institution
-        </button>
-      </mat-list-item>
-
       <mat-list-item routerLink="reports">
-          <button class="menu-item" mat-flat-button>
-            Reports
-          </button>
-        </mat-list-item>
+        <button class="menu-item" mat-flat-button>
+          <mat-icon>report</mat-icon>
+          Reports
+        </button>
+      </mat-list-item>
 
       <mat-list-item>
         <button class="menu-item" mat-flat-button>
@@ -61,39 +116,13 @@
           Settings
         </button>
       </mat-list-item>
-
-
-
-    <!-- <span fxShow.lt-md="false" fxShow.gt-sm="true">
-      <button mat-button>
-        <mat-icon class="mr-1">link</mat-icon>
-        Link</button>
-      <button mat-button>
-        <mat-icon class="mr-1">link</mat-icon>
-        Link</button>
-      <button mat-button [matMenuTriggerFor]="dropDown">
-        DropDown
-        <mat-icon class="ml-1">arrow_drop_down</mat-icon>
-      </button>
-      <mat-menu #dropDown="matMenu" overlapTrigger="false">
-        <button mat-menu-item>
-          <mat-icon>dialpad</mat-icon>
-          <span>Dropdown Link 1</span>
-        </button>
-        <button mat-menu-item disabled>
-          <mat-icon>voicemail</mat-icon>
-          <span>Dropdown Link 2</span>
-        </button>
-      </mat-menu>
-    </span> -->
-
     </mat-list>
 
-    
   </mat-sidenav>
 
   <mat-sidenav-content [ngStyle]="{ 'margin-left.px': contentMargin }">
-    
+
+
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
