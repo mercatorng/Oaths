@@ -28,7 +28,8 @@ export class RolesComponent implements OnInit {
   showErrorMsg = false;
   roles: Role[];
   chosenRole;
-  loading=true
+  loading=true;
+  displayedColumns: string[] = ['id', 'name'];
 
   constructor(
     private modalService: NgbModal,
@@ -39,6 +40,8 @@ export class RolesComponent implements OnInit {
     this.setPrivilegesToFalse()
     this.getRolesByInstitution()
   }
+
+  
 
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
