@@ -13,12 +13,20 @@ import { RolesService } from '../services/roles.service';
 export class RolesComponent implements OnInit {
 
   menus = [
-    {name: 'privilege1'},
-    {name: 'privilege2'},
-    {name: 'privilege3'},
-    {name: 'privilege4'},
-    {name: 'privilege5'}
+    {name: 'Documents'},
+    {name: 'Roles'},
+    {name: 'Institution'},
+    {name: 'Payment'},
+    {name: 'Reports'},
+    {name: 'Create Users'}
   ];
+
+  fakeRoles = [
+    {name:"Admin", id:1},
+    {name:"Cashier", id:2},
+    {name:"Registrar", id:3},
+    {name:"Commissioner", id:4}
+  ]
   role: Role;
   roleName: string;
   privilegeRead = new Array(this.menus.length);

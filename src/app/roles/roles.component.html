@@ -76,7 +76,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let role of roles; index as i" (click)="open(editrolemodal)" (click)="editrole(role)" style="cursor:pointer">
+        <!-- <tr *ngFor="let role of roles; index as i" (click)="open(editrolemodal)" (click)="editrole(role)" style="cursor:pointer"> -->
+            <tr *ngFor="let role of fakeRoles; index as i" (click)="open(editrolemodal)" (click)="editrole(role)" style="cursor:pointer">
           <th class="index">{{i+1}}</th>
           <td style="font-weight: bold; text-align: center">{{role.name}}</td>
           <td><i class="material-icons">create</i></td>
