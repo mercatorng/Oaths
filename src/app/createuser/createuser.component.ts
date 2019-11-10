@@ -79,7 +79,6 @@ export class CreateuserComponent implements OnInit {
       this.roles = data as Role[];
     },
       err => {
-        console.log(err);
       });
   }
 
@@ -87,12 +86,10 @@ export class CreateuserComponent implements OnInit {
     this.createUserForm.value.institutionID = 1;
     this.createUserForm.value.roleID=this.roles.find(x=> {return x.name==this.createUserForm.value.role}).id
     delete this.createUserForm.value.role
-    console.log(this.createUserForm.value);
+    //console.log(this.createUserForm.value);
     this.loginService.createUser(this.createUserForm.value).subscribe(data => {
-      console.log(data);
     },
       err => {
-        console.log(err);
     });
   }
 
@@ -100,10 +97,8 @@ export class CreateuserComponent implements OnInit {
     this.loginService.getUsers(1).subscribe(data=>{
       this.users=<User[]>data
       this.loading=false
-      console.log(data)
     },
       err=>{
-        console.log(err)
     })
   }
 
