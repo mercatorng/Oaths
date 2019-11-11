@@ -25,6 +25,7 @@ import { ReportsComponent } from './reports/reports.component';
 import { MatTableModule } from '@angular/material/table';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
+import { PaymentsComponent } from './payments/payments.component';
 
 import { ToastModule } from './toast/toast.module';
 
@@ -40,7 +41,8 @@ import { ToastModule } from './toast/toast.module';
     InstitutionComponent,
     ReportsComponent,
     DashboardComponent,
-    MatDialogComponent
+    MatDialogComponent,
+    PaymentsComponent
   ],
   imports: [
     BrowserModule,

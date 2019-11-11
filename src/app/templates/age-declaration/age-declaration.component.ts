@@ -41,6 +41,7 @@ export class AgeDeclarationComponent implements OnInit {
   ngOnInit() {
     this.getInstitution();
     this.ageForm = this.formBuilder.group({
+      id: [0],
       name: ['', Validators.required],
       address: ['', Validators.required],
       age: [
@@ -58,7 +59,7 @@ export class AgeDeclarationComponent implements OnInit {
       registeredLocalLGovt: ['', Validators.required],
       registeredState: ['', Validators.required],
 
-      date: ['', Validators.required],
+      date: ['2019-11-11T16:47:37.627Z', Validators.required],
       courtName: ['', Validators.required],
       fromLanguage: ['', Validators.required],
       toLanguage: ['', Validators.required],
@@ -66,7 +67,12 @@ export class AgeDeclarationComponent implements OnInit {
       amountPaid: ['', Validators.required],
       tellerNumber: [''],
       presentDay: ['', Validators.required],
-      presentMonthYear: ['', Validators.required]
+      presentMonthYear: ['', Validators.required],
+      // documentRef:[''],
+      // isPaid: [''],
+      // dateGenerated: [''],
+      // datePaid: [''],
+      // documentName: ['']
     });
   }
 
@@ -91,6 +97,7 @@ export class AgeDeclarationComponent implements OnInit {
     const obj = { ...this.ageForm.value };
     obj.staffId = this.currentUser.id;
     obj.institutionId = this.currentUser.institutionID;
+    console.log(obj)
     this.documentService.saveAgeDeclaration(obj).subscribe(
       res => {
         console.log(res);
@@ -163,3 +170,6 @@ export class AgeDeclarationComponent implements OnInit {
     return invalidControls;
   }
 }
+
+
+
