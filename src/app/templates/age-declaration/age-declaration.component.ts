@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { InstitutionService } from './../../services/institution.service';
 import { User } from './../../models/user';
 import { Institution } from 'src/app/models/institution';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 import {
   MatDialog,
   MatDialogConfig,
@@ -10,7 +10,11 @@ import {
   MAT_DIALOG_DATA
 } from '@angular/material/dialog';
 import { MatDialogComponent } from './../../mat-dialog/mat-dialog.component';
-
+import { DocumentService } from '../../services/document.service';
+import { ToastService } from './../../services/toast.service';
+import { AlertService } from 'src/app/services/alert.service';
+import { interval as observableInterval } from 'rxjs';
+import { takeWhile, scan, tap } from 'rxjs/operators';
 @Component({
   selector: 'app-age-declaration',
   templateUrl: './age-declaration.component.html',
@@ -21,11 +25,15 @@ export class AgeDeclarationComponent implements OnInit {
   institution: Institution;
   ageForm: FormGroup;
   submitted = false;
+  loading = false;
 
   constructor(
     private institutionService: InstitutionService,
     private formBuilder: FormBuilder,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private documentService: DocumentService,
+    public toastService: ToastService,
+    private alertService: AlertService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')) as User;
   }
@@ -49,14 +57,14 @@ export class AgeDeclarationComponent implements OnInit {
       birthLocalGovt: ['', Validators.required],
       registeredLocalLGovt: ['', Validators.required],
       registeredState: ['', Validators.required],
-      registeredCountry: ['', Validators.required],
+
       date: ['', Validators.required],
       courtName: ['', Validators.required],
       fromLanguage: ['', Validators.required],
       toLanguage: ['', Validators.required],
       interpreter: ['', Validators.required],
       amountPaid: ['', Validators.required],
-      tellerNumber: ['', Validators.required],
+      tellerNumber: [''],
       presentDay: ['', Validators.required],
       presentMonthYear: ['', Validators.required]
     });
@@ -66,18 +74,6 @@ export class AgeDeclarationComponent implements OnInit {
     return this.ageForm.controls;
   }
 
-  get name() {
-    return this.ageForm.get('name');
-  }
-  get address() {
-    return this.ageForm.get('address');
-  }
-  get age() {
-    return this.ageForm.get('age');
-  }
-  get dob() {
-    return this.ageForm.get('dateofBirth');
-  }
   getInstitution() {
     this.institutionService
       .getInstitutionById(this.currentUser.institutionID)
@@ -89,11 +85,48 @@ export class AgeDeclarationComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     if (this.ageForm.invalid) {
-      console.log(this.ageForm);
       return;
     }
-    console.log(this.ageForm.value);
-    this.openDialog();
+    this.loading = true;
+    const obj = { ...this.ageForm.value };
+    obj.staffId = this.currentUser.id;
+    obj.institutionId = this.currentUser.institutionID;
+    this.documentService.saveAgeDeclaration(obj).subscribe(
+      res => {
+        console.log(res);
+        this.loading = false;
+        this.openDialog('Declaration of Age', `Saved Succesfully`);
+        this.toastService.show('Saved Succesfully', {
+          classname: 'bg-success text-light',
+          delay: 10000,
+          autohide: true,
+          headertext: 'Declaration of Age'
+        });
+        this.alertService.success('Success');
+      },
+      error => {
+        console.log(error);
+        this.loading = false;
+        this.toastService.show(`${error.statusText}`, {
+          classname: 'bg-danger text-light',
+          delay: 2000,
+          autohide: true,
+          headertext: 'Error!!!'
+        });
+      }
+    );
+  }
+  scrollToTop(el) {
+    const duration = 600;
+    const interval = 5;
+    const move = (el.scrollTop * interval) / duration;
+    observableInterval(interval)
+      .pipe(
+        scan((acc, curr) => acc - move, el.scrollTop),
+        tap(position => (el.scrollTop = position)),
+        takeWhile(val => val > 0)
+      )
+      .subscribe();
   }
 
   reset() {
@@ -101,10 +134,32 @@ export class AgeDeclarationComponent implements OnInit {
     this.ageForm.reset();
   }
 
-  openDialog(): void {
+  openDialog(title, msg): void {
     this.dialog.open(MatDialogComponent, {
       width: '250px',
-      data: { title: 'Save Success', msg: 'Succesful' }
+      data: { title, msg }
     });
+  }
+
+  findInvalidControlsRecursive(
+    formToInvestigate: FormGroup | FormArray
+  ): string[] {
+    const invalidControls: string[] = [];
+    const recursiveFunc = (form: FormGroup | FormArray) => {
+      Object.keys(form.controls).forEach(field => {
+        const control = form.get(field);
+        if (control.invalid) {
+          invalidControls.push(field);
+        }
+        if (control instanceof FormGroup) {
+          recursiveFunc(control);
+        } else if (control instanceof FormArray) {
+          recursiveFunc(control);
+        }
+      });
+    };
+    recursiveFunc(formToInvestigate);
+    console.log(invalidControls);
+    return invalidControls;
   }
 }

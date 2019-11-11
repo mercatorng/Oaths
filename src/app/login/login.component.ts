@@ -54,19 +54,15 @@ export class LoginComponent implements OnInit {
       return;
     }
     this.loading = true;
-    this.loginService
-      .login(this.loginForm.value)
-      .subscribe(
-        res => {
-          this.loading = false;
-          
-            this.router.navigate(['/navigation']);
-
-        },
-        error => {
-          this.loading = false;
-          console.log(error);
-        }
-      );
+    this.loginService.login(this.loginForm.value).subscribe(
+      res => {
+        this.loading = false;
+        this.router.navigate(['/navigation']);
+      },
+      error => {
+        this.loading = false;
+        console.log(error);
+      }
+    );
   }
 }
