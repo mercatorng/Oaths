@@ -30,7 +30,7 @@ const routes: Routes = [
   {
     path: 'navigation',
     component: NavigationComponent,
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     data: { title: 'Navigation Component' },
     children: [
       {
