@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
 
 import { EnvService } from './env.service';
 
@@ -7,6 +8,14 @@ import { EnvService } from './env.service';
 })
 export class DocumentService {
   // baseUrl = environment.baseUrl;
+
+  url = 'https://mercatoroathapi.azurewebsites.net/api'
   
-  constructor() { }
+  constructor(
+    private httpClient:HttpClient
+  ) { }
+
+  getMarriageAgeNameGeneralById(urll,id){
+    return this.httpClient.get(`${this.url}/${urll}/${id}`)
+  }
 }

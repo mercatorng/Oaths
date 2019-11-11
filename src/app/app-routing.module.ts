@@ -14,6 +14,7 @@ import { AddrolesComponent } from './addroles/addroles.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { InstitutionComponent } from './institution/institution.component';
 import { ReportsComponent } from './reports/reports.component';
+import { PaymentsComponent } from './payments/payments.component';
 import { AuthGuard } from './util/auth.guard';
 
 const routes: Routes = [
@@ -82,6 +83,11 @@ const routes: Routes = [
         path: 'reports',
         component: ReportsComponent,
         data: { title: 'Reports Component' }
+      },
+      {
+        path: 'payments',
+        component: PaymentsComponent,
+        data: { title: 'Payments Component' }
       },
       { path: '**', redirectTo: '' }
     ]
