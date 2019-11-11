@@ -23,6 +23,7 @@ import { InstitutionComponent } from './institution/institution.component';
 import { ReportsComponent } from './reports/reports.component';
 import { MatTableModule } from '@angular/material/table';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { MatDialogComponent } from './mat-dialog/mat-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     CreateuserComponent,
     InstitutionComponent,
     ReportsComponent,
-    DashboardComponent
+    DashboardComponent,
+    MatDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     TemplatesModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MatDialogComponent]
 })
 export class AppModule {}
