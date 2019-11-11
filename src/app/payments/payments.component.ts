@@ -24,7 +24,8 @@ export class PaymentsComponent implements OnInit {
   documentImage=true;
   payment:Payment;
   paymentForm:FormGroup;
-  currentUser:User
+  currentUser:User;
+  loading=false;
 
   constructor(
     private modalService: NgbModal,
@@ -58,6 +59,9 @@ export class PaymentsComponent implements OnInit {
   }
 
   searchDocument(){
+    this.loading=true
+    this.documentImage=false
+    this.age=this.marriage=this.name=this.general=false
     if(this.documentType=="Marriage Declaration"){
       this.url="Marriage/GetByID"
     }
@@ -74,6 +78,7 @@ export class PaymentsComponent implements OnInit {
     this.documentService.getMarriageAgeNameGeneralById(this.url,this.id).subscribe(data=>{
       this.oathform=<any>data
       this.documentImage=false
+      this.loading=false
       if(this.documentType=="Marriage Declaration"){
         this.marriage=true
         this.age=this.name=this.general=false

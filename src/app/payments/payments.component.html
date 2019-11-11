@@ -24,7 +24,16 @@
     <div class="document" *ngIf="documentImage">
         <img src="../../assets/img/undraw_blog_anyj.png" height="300px" width="400px" style="opacity:0.5">
     </div>
+
+    <div style="height:300px" *ngIf="loading">
+    <div class="loader mt-4"></div>
+    </div>
+
     <div *ngIf="marriage" class="oathform">
+        <div>
+            <img [src]="currentUser.institution.logo1" height="50px" width="50px" style="float:left; margin-left:10px">
+            <img [src]="currentUser.institution.logo2" height="50px" width="50px" style="float:right; margin-right:10px">
+        </div>
         <h3>Id:{{oathform.id}}</h3>
         <h3>Court Name:{{oathform.courtName}}</h3>
         <h3>Declarant:{{oathform.declarant}}</h3>
@@ -32,18 +41,30 @@
         <h3>Wife:{{oathform.wife}}</h3>
     </div>
     <div *ngIf="age" class="oathform">
+            <div>
+                <img [src]="currentUser.institution.logo1" height="50px" width="50px" style="float:left; margin-left:10px">
+                <img [src]="currentUser.institution.logo2" height="50px" width="50px" style="float:right; margin-right:10px">
+            </div>
         <h3>Id:{{oathform.id}}</h3>
         <h3>Court Name:{{oathform.courtName}}</h3>
         <h3>Name:{{oathform.name}}</h3>
         <h3>Date of Birth:{{oathform.dateofBirth}}</h3>
     </div>
     <div *ngIf="name" class="oathform">
+        <div>
+            <img [src]="currentUser.institution.logo1" height="50px" width="50px" style="float:left; margin-left:10px">
+            <img [src]="currentUser.institution.logo2" height="50px" width="50px" style="float:right; margin-right:10px">
+        </div>
         <h3>Id:{{oathform.id}}</h3>
         <h3>Court Name:{{oathform.courtName}}</h3>
         <h3>Formerly Called:{{oathform.formerlyCalled}}</h3>
         <h3>Now Called:{{oathform.nowCalled}}</h3>
     </div>
     <div *ngIf="general" class="oathform">
+        <div>
+            <img [src]="currentUser.institution.logo1" height="50px" width="50px" style="float:left; margin-left:10px">
+            <img [src]="currentUser.institution.logo2" height="50px" width="50px" style="float:right; margin-right:10px">
+        </div>
         <h3>Id:{{oathform.id}}</h3>
         <h3>Court Name:{{oathform.courtName}}</h3>
         <h3>Deponent: {{oathform.deponent}}</h3>
