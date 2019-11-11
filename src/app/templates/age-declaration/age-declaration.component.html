@@ -1,155 +1,294 @@
 <div class="paper">
-    <div class="header">
-      <img src="https://seeklogo.com/images/C/coat-of-arms-of-nigeria-logo-1BB4D7976C-seeklogo.com.png" alt="coat of arms"
-        class="mt-2" />
-      <div class="header-title text-center mt-4">
-        <h5 class="text-success">
-          HIGH COURT OF JUSTICE<br />
-          FEDERAL CAPITAL TERRITORY, ABUJA
-        </h5>
-      </div>
-      <img src="https://www.fhc-ng.com/Fhc%20first%20file/logo.png" alt="high court logo" class="mt-2" />
+  <div class="header">
+    <img *ngIf="institution" src="{{institution?.logo1}}" alt="coat of arms" class="mt-2" />
+    <img *ngIf="!institution"
+      src="https://seeklogo.com/images/C/coat-of-arms-of-nigeria-logo-1BB4D7976C-seeklogo.com.png" class="mt-2" />
+    <div class="header-title text-center mt-4">
+      <h5 class="text-success">
+        {{ institution?.name }}<br />
+        {{ institution?.address }}
+      </h5>
     </div>
-    <div class="panel text-white text-center">
-      <p>statutory declaration of age</p>
-    </div>
-  
-    <div class="declaration">
-      <form>
-          <ol>
-              <li>
-                    <div class="twins ">
-                            <p class="twin c3">I</p>
-                            <input type="text" id="name" placeholder="DORA MARY ANYANYA AKATU" name="name" class="lg c9 ml-2" />
-                            <p class="twin c3">of</p>
-                          </div>
-                    <div class="twins mt-2">
-                            <input type="text" id="address" placeholder="no. 15 policia street fha, nyanya, abuja" name="address"
-                              class="lg c9 ml-2" />
-                            <p class="twin c3">do solemly:</p>
-                          </div>
-                          <p class="mt-3"> and sincerely declare:</p>
-              </li>
-              <li>
-                    
-                            <div class="twins mt-2">
-                              <p class="twin c3">That my age is </p>
-                              <input type="text" id="claim" name="claim" placeholder="53 years" class="lg c9 ml-2" />
-                            </div>
-                            <div class="form-inline mr-2 c3">
-                                    <p>That I am the  <input type="text" id="relationship" name="relationship" placeholder="uncle" /> of
-                                    <input type="text" placeholder="asema hembafan" name="" id="" />
-                                    </p>
-                                  </div>
-                          
-              </li>
-              <li>
-                    <div class="twins mt-2">
-                      <p class="twin c4">That  to the best of my knowledge and belief the said</p>
-                      <input placeholder="asema hemabfan ruth" id="" name="" class="lg c9 ml-2"/>
-                    </div>
-                    <div class="form-inline mr-2 c3">
-                            <p>was born at <input type="text" id="place" name="place" placeholder="amowa" /> in
-                            <input type="text" placeholder="konshisha" name="" id="" class="mt-2" /> Local Government Area of
-                            <input type="text" placeholder="benue" name="state" class="mt-2"/> State. On the 
-                            <input type="text" placeholder="8th" name="day" class="mt-2"/> day of
-                            <input type="text" placeholder="october 1998" id="my" name="my" class=" mt-1 ml-2" />
-                            </p>
-                          </div>
-            </li>
-            <li>
-                    <div class="twins mt-2">
-                      <p class="twin c4">That at the time of his/her birth, it was not registered at</p>
-                      <input placeholder="konishisha local government area, " id="lga" name="lga" class="lg c8 ml-2"/>
-                    </div>
-                    <div class="twins mt-2">
-                            
-                            <input placeholder="benue state, nigeria, " id="state" name="state" class="lg c8 ml-2"/>
-                          </div>
-            </li>
-            <li>
-                    
-                <p class="mt-2">That I am making the solemn declaration conscientiously believing same to be true and correct in accordance with the Oaths Act of 1990.</p>
-                      
-            </li>
-
-        </ol>
-        
-        
-        
-        <div class="twins mt-2">
-          <div class="form-inline mr-2 c3">
-            <p>Date: <input type="date" id="date" name="date" /></p>
-          </div>
-          <div class="text-center c9">
-            <input class="signature signature2" />
-            <p>Signature or Mark of Declarant</p>
-          </div>
-        </div>
-        <div class="twins mt-2">
-          <p class="twin c3">Sworn to at the</p>
-          <input type="text" id="venue" name="venue" placeholder="high court, maitama" class="lg c9 ml-2" />
-          <p class="twin c3">Registry</p>
-        </div>
-  
-        <div class="form-inline mt-2">
-          <p>
-            This <input type="text" placeholder="18th" id="day" name="day" /> day
-            of
-            <input type="text" placeholder="october 2019" id="my" name="my" class=" mt-1 ml-2 c9" />
-          </p>
-        </div>
-        <p class="mt-2 mb-2">
-          The foregoing has been read over and interpreted by the declarant from
-        </p>
-        <div class="form-inline">
-          <p>
-            <input type="text" placeholder="nil" name="nil" id="nil" /> Language
-            to <input type="text" placeholder="nil" class="mt-2" /> Language by
-            <input type="text" placeholder="nil" class="mt-2" />
-          </p>
-        </div>
-        <p class="mt-2 mb-2">
-          The above has been interpreted to me and I understand same before affixing my
-          thumb impression there to.
-        </p>
-  
-        <div class="d-flex justify-content-end">
-          <p class="mt-4">Signature of Interpreter</p>
-          <input class="signature signature2" />
-        </div>
-  
-        <div class="footer mt-4">
-          <div>
-            <div class="form-inline mt-3">
-              <label for="fees" class="mr-sm-2"><strong>Fees Paid:</strong></label>
-              <input type="fees" class="mb-2 mr-sm-2" id="fees" placeholder="500" />
-            </div>
-            <div class="form-inline">
-              <label for="teller" class="mr-sm-2"><strong>Receipt/Bank Teller No:</strong></label>
-              <input type="teller" class="mb-2 mr-sm-2" id="teller" placeholder="11597697" />
-            </div>
-          </div>
-          <div class="mt-1 ml-3">
-            <i><em>Affix Thumb Print Here</em></i>
-            <textarea></textarea>
-          </div>
-        </div>
-        <div class="form-inline">
-          <label for="date" class="mr-sm-2"><strong>Date:</strong></label>
-          <input type="date" class="mb-2 mr-sm-2" id="date" placeholder="08/08/2019" />
-        </div>
-        <div class="d-flex justify-content-end mt-3">
-          <div class="oath text-center mr-2">
-            <p>Before Me</p>
-          </div>
-          <div>
-            <input class="signature signature2" />
-            <p class="text-capitalize mt-1"><strong>Commisioner of Oaths</strong></p>
-          </div>
-        </div>
-        <button class="btn-block mt-4 main">Submit</button>
-      </form>
-    </div>
+    <img src="{{ institution?.logo2 }}" alt="high court logo" class="mt-2" />
   </div>
-  
+  <div class="panel text-white text-center">
+    <p>statutory declaration of age</p>
+  </div>
+
+  <div class="declaration">
+    <form [formGroup]="ageForm" #form="ngForm" (ngSubmit)="onSubmit()">
+      <ol>
+        <li>
+          <div class="twins ">
+            <p class="twin c3">I</p>
+            <input type="text" placeholder="DORA MARY ANYANYA AKATU" formControlName="name" name="name"
+              class="lg c9 ml-2" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+
+            <p class="twin c3">of</p>
+          </div>
+          <!-- <div *ngIf=" name.touched && name.invalid || submitted && name.errors" class="alert alert-danger">
+            <small *ngIf="name.errors.required">Name is required</small>
+          </div> -->
+          <div *ngIf="(f?.name.dirty && f?.name.invalid) || (submitted && f.name.errors)" class="alert alert-danger">
+            <small *ngIf="f?.name.errors.required">Name is required</small>
+          </div>
+          <div class="twins mt-2">
+            <input type="text" id="address" placeholder="no. 15 policia street fha, nyanya, abuja" name="address"
+              class="lg c9 ml-2" formControlName="address"
+              [ngClass]="{ 'is-invalid': submitted && f.address.errors }" />
+            <p class="twin c3">do solemly:</p>
+          </div>
+          <div *ngIf="(f.address.dirty && f.address.invalid) ||(submitted && f.address.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.address.errors.required">Address is required</small>
+          </div>
+          <p class="mt-3">and sincerely declare:</p>
+        </li>
+        <li>
+          <div class="twins mt-2">
+            <p class="twin c3">That my age is</p>
+            <input type="text" id="claim" name="claim" placeholder="53 years" class="lg c9 ml-2" formControlName="age"
+              [ngClass]="{ 'is-invalid': submitted && f.age.errors }" />
+          </div>
+          <div *ngIf="(f.age.dirty && f.age.invalid) || (submitted && f.age.errors)" class="alert alert-danger">
+            <small *ngIf="f.age.errors.required">Age is required</small>
+          </div>
+          <div class="form-inline mr-2 c3">
+            <p>
+              That I am the
+              <input type="text" [ngClass]="{'is-invalid': submitted && f.relationship.errors}"
+                formControlName="relationship" placeholder="e.g uncle" />
+
+              <span *ngIf="(f.relationship.dirty && f.relationship.invalid) || (submitted && f.relationship.errors)"
+                class="alert alert-danger">
+                <small *ngIf="f.relationship.errors.required">Relationship is required</small>
+              </span>
+              of
+              <input type="text" placeholder="asema hembafan" formControlName="relativeName"
+                [ngClass]="{'is-invalid': submitted && f.relativeName.errors}" />
+              <span *ngIf="(f.relativeName.dirty && f.relativeName.invalid) || (submitted && f.relativeName.errors)"
+                class="alert alert-danger">
+                <small *ngIf="f.relativeName.errors.required">Relative's Name is required</small>
+              </span>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="twins mt-2">
+            <p class="twin c4">
+              That to the best of my knowledge and belief the said
+            </p>
+            <input placeholder="asema hemabfan ruth" [ngClass]="{'is-invalid': submitted && f.relativeName2.errors}"
+              formControlName="relativeName2" class="lg c9 ml-2" />
+          </div>
+          <div *ngIf="(f.relativeName2.dirty && f.relativeName2.invalid) || (submitted && f.relativeName2.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.relativeName2.errors.required">Relative's Name is required</small>
+          </div>
+          <div class="form-inline mr-2 c3">
+            <p>
+              was born at
+              <input type="text" formControlName="birthPlace" placeholder="amowa"
+                [ngClass]="{'is-invalid': submitted && f.birthPlace.errors}" />
+              <span *ngIf="(f.birthPlace.dirty && f.birthPlace.invalid) || (submitted && f.birthPlace.errors)"
+                class="alert alert-danger">
+                <small *ngIf="f.birthPlace.errors.required">Birth Place is required</small>
+              </span>
+              in
+              <input type="text" placeholder="konshisha" formControlName="birthLocalGovt" name="birthLocalGovt"
+                [ngClass]="{'is-invalid': submitted && f.birthLocalGovt.errors}" class="mt-2" />
+              <span
+                *ngIf="(f.birthLocalGovt.dirty && f.birthLocalGovt.invalid) || (submitted && f.birthLocalGovt.errors)"
+                class="alert alert-danger">
+                <small *ngIf="f.birthLocalGovt.errors.required">Birth Local Government Area is required</small>
+              </span>
+              Local Government Area of
+              <input type="text" placeholder="benue" formControlName="birthState" class="mt-2"
+                [ngClass]="{'is-invalid': submitted && f.birthState.errors}" />
+              <span *ngIf="(f.birthState.dirty && f.birthState.invalid) || (submitted && f.birthState.errors)"
+                class="alert alert-danger">
+                <small *ngIf="f.birthState.errors.required">Birth State is required</small>
+              </span>
+              State. On the
+              <input type="text" placeholder="8th" formControlName="dayOfBirth" class="mt-2"
+                [ngClass]="{'is-invalid': submitted && f.dayOfBirth.errors}" />
+              <span *ngIf="(f.dayOfBirth.dirty && f.dayOfBirth.invalid) || (submitted && f.dayOfBirth.errors)"
+                class="alert alert-danger">
+                <small *ngIf="f.dayOfBirth.errors.required">Day of Birth is required</small>
+              </span>
+              day of
+              <input type="text" placeholder="october 1998"
+                [ngClass]="{'is-invalid': submitted && f.dateofBirth.errors}" formControlName="dateofBirth"
+                class=" mt-1 ml-2" />
+              <span *ngIf="(f.dateofBirth.dirty && f.dateofBirth.invalid) || (submitted && f.dateofBirth.errors)"
+                class="alert alert-danger">
+                <small *ngIf="f.dateofBirth.errors.required">Date of Birth is required</small>
+              </span>
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="twins mt-2">
+            <p class="twin c4">
+              That at the time of his/her birth, it was not registered at
+            </p>
+            <input placeholder="konishisha local government area, " formControlName="registeredLocalLGovt"
+              class="lg c8 ml-2" [ngClass]="{'is-invalid': submitted && f.registeredLocalLGovt.errors}" />
+            <div
+              *ngIf="(f.registeredLocalLGovt.dirty && f.registeredLocalLGovt.invalid) || (submitted && f.registeredLocalLGovt.errors)"
+              class="alert alert-danger">
+              <small *ngIf="f.registeredLocalLGovt.errors.required">Local Government is required</small>
+            </div>
+          </div>
+          <div class="twins mt-2">
+            <input placeholder="benue state, nigeria, "
+              [ngClass]="{'is-invalid': submitted && f.registeredState.errors}" formControlName="registeredState"
+              class="lg c8 ml-2" />
+          </div>
+          <div *ngIf="(f.registeredState.dirty && f.registeredState.invalid) || (submitted && f.registeredState.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.registeredState.errors.required">State is required</small>
+          </div>
+        </li>
+        <li>
+          <p class="mt-2">
+            That I am making the solemn declaration conscientiously believing
+            same to be true and correct in accordance with the Oaths Act of
+            1990.
+          </p>
+        </li>
+      </ol>
+
+      <div class="twins mt-2">
+        <div class="form-inline mr-2 c3">
+          <p>Date: <input type="date" id="date" formControlName="date"
+              [ngClass]="{'is-invalid': submitted && f.date.errors}" />
+            <span *ngIf="(f.date.dirty && f.date.invalid) || (submitted && f.date.errors)" class="alert alert-danger">
+              <small *ngIf="f.date.errors.required">Date is required</small>
+            </span>
+          </p>
+        </div>
+        <div class="text-center c9">
+          <input class="signature signature2" />
+          <p>Signature or Mark of Declarant</p>
+        </div>
+      </div>
+      <div class="twins mt-2">
+        <p class="twin c3">Sworn to at the</p>
+        <input type="text" [ngClass]="{'is-invalid': submitted && f.courtName.errors}" formControlName="courtName"
+          placeholder="high court, maitama" class="lg c9 ml-2" />
+        <p class="twin c3">Registry</p>
+      </div>
+      <div *ngIf="(f.courtName.dirty && f.courtName.invalid) || (submitted && f.courtName.errors)"
+        class="alert alert-danger">
+        <small *ngIf="f.courtName.errors.required">Court Name is required</small>
+      </div>
+
+      <div class="form-inline mt-2">
+        <p>
+          This <input type="text" placeholder="18th" formControlName="presentDay"
+            [ngClass]="{'is-invalid': submitted && f.presentDay.errors}" />
+          <span *ngIf="(f.presentDay.dirty && f.presentDay.invalid) || (submitted && f.presentDay.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.presentDay.errors.required">Day is required</small>
+          </span>
+          day
+          of
+          <input type="text" placeholder="october 2019" id="my" formControlName="presentMonthYear" class=" mt-1 ml-2 c9"
+            [ngClass]="{'is-invalid': submitted && f.presentMonthYear.errors}" />
+          <span
+            *ngIf="(f.presentMonthYear.dirty && f.presentMonthYear.invalid) || (submitted && f.presentMonthYear.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.presentMonthYear.errors.required">month and year is required</small>
+          </span>
+        </p>
+      </div>
+      <p class="mt-2 mb-2">
+        The foregoing has been read over and interpreted by the declarant from
+      </p>
+      <div class="form-inline">
+        <p>
+          <input type="text" placeholder="nil" formControlName="fromLanguage" name="nil"
+            [ngClass]="{'is-invalid': submitted && f.fromLanguage.errors}" />
+          <span *ngIf="(f.fromLanguage.dirty && f.fromLanguage.invalid) || (submitted && f.fromLanguage.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.fromLanguage.errors.required">Language From is required</small>
+          </span>
+
+          Language
+          to
+          <input type="text" placeholder="nil" class="mt-2" formControlName="toLanguage"
+            [ngClass]="{'is-invalid': submitted && f.toLanguage.errors}" />
+          <span *ngIf="(f.toLanguage.dirty && f.toLanguage.invalid) || (submitted && f.toLanguage.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.toLanguage.errors.required">Language To is required</small>
+          </span>
+          Language by
+          <input type="text" placeholder="nil" class="mt-2" formControlName="interpreter"
+            [ngClass]="{'is-invalid': submitted && f.interpreter.errors}" />
+
+          <span *ngIf="(f.interpreter.dirty && f.interpreter.invalid) || (submitted && f.interpreter.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.interpreter.errors.required">Interpreter is required</small>
+          </span>
+        </p>
+      </div>
+      <p class="mt-2 mb-2">
+        The above has been interpreted to me and I understand same before
+        affixing my thumb impression there to.
+      </p>
+
+      <div class="d-flex justify-content-end">
+        <p class="mt-4">Signature of Interpreter</p>
+        <input class="signature signature2" />
+      </div>
+
+      <div class="footer mt-4">
+        <div>
+          <div class="form-inline mt-3">
+            <label for="fees" class="mr-sm-2"><strong>Fees Paid:</strong></label>
+            <input type="number" class="mb-2 mr-sm-2" formControlName="amountPaid" placeholder="500"
+              [ngClass]="{'is-invalid': submitted && f.amountPaid.errors}" />
+          </div>
+          <div *ngIf="(f.amountPaid.dirty && f.amountPaid.invalid) || (submitted && f.amountPaid.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.amountPaid.errors.required">Amount is required</small>
+          </div>
+          <div class="form-inline">
+            <label for="teller" class="mr-sm-2"><strong>Receipt/Bank Teller No:</strong></label>
+            <input type="text" class="mb-2 mr-sm-2" formControlName="tellerNumber" placeholder="11597697"
+              [ngClass]="{'is-invalid': submitted && f.tellerNumber.errors}" />
+          </div>
+          <div *ngIf="(f.tellerNumber.dirty && f.tellerNumber.invalid) || (submitted && f.tellerNumber.errors)"
+            class="alert alert-danger">
+            <small *ngIf="f.tellerNumber.errors.required">Teller Number is required</small>
+          </div>
+        </div>
+        <div class="mt-1 ml-3">
+          <i><em>Affix Thumb Print Here</em></i>
+          <textarea></textarea>
+        </div>
+      </div>
+      <div class="form-inline">
+        <label for="date" class="mr-sm-2"><strong>Date:</strong></label>
+        <input type="date" class="mb-2 mr-sm-2" formControlName="date" placeholder="08/08/2019"
+          [ngClass]="{'is-invalid':  submitted && f.date.errors}" />
+        <div *ngIf="(f.date.dirty && f.date.invalid) || (submitted && f.date.errors)" class="alert alert-danger">
+          <small *ngIf="f.date.errors.required">Date is required</small>
+        </div>
+      </div>
+      <div class="d-flex justify-content-end mt-3">
+        <div class="oath text-center mr-2">
+          <p>Before Me</p>
+        </div>
+        <div>
+          <input class="signature signature2" />
+          <p class="text-capitalize mt-1">
+            <strong>Commisioner of Oaths</strong>
+          </p>
+        </div>
+      </div>
+      <button class="btn-block mt-4 main" type="submit">Submit</button>
+    </form>
+  </div>
+</div>
