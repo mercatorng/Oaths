@@ -19,5 +19,8 @@ export class DocumentService {
 
   saveAgeDeclaration(obj: AgeDeclaration) {
     return this.http.post(`${this.url}/AgeDeclaration/save`, obj);
+
+  getMarriageAgeNameGeneralById(urll,id){
+    return this.httpClient.get(`${this.url}/${urll}/${id}`)
   }
 }
