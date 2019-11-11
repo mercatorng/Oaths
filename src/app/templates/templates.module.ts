@@ -5,6 +5,9 @@ import { NameChangeComponent } from './name-change/name-change.component';
 import { GeneralFormComponent } from './general-form/general-form.component';
 import { AgeDeclarationComponent } from './age-declaration/age-declaration.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from './../toast/toast.module';
+import { AlertModule } from './../alert/alert.module';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -13,6 +16,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     GeneralFormComponent,
     AgeDeclarationComponent
   ],
-  imports: [CommonModule, FormsModule, ReactiveFormsModule]
+  imports: [
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ToastModule,
+    AlertModule,
+    SharedModule
+  ]
 })
 export class TemplatesModule {}
