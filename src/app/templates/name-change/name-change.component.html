@@ -1,21 +1,13 @@
 <div class="paper">
   <div class="header">
-    <img
-      src="https://seeklogo.com/images/C/coat-of-arms-of-nigeria-logo-1BB4D7976C-seeklogo.com.png"
-      alt="coat of arms"
-      class="mt-2"
-    />
+    <img src={{institution?.logo1}} alt="coat of arms" class="mt-2" />
     <div class="header-title text-center mt-4">
       <h5 class="text-success">
-        HIGH COURT OF JUSTICE<br />
-        FEDERAL CAPITAL TERRITORY, ABUJA
+        {{institution?.name}}<br />
+        {{institution?.address}}
       </h5>
     </div>
-    <img
-      src="https://www.fhc-ng.com/Fhc%20first%20file/logo.png"
-      alt="high court logo"
-      class="mt-2"
-    />
+    <img src={{institution?.logo2}} alt="high court logo" class="mt-2" />
   </div>
   <div class="panel text-white text-center">
     <p>affidavit of change name</p>
@@ -25,46 +17,23 @@
     <form>
       <div class="twins ">
         <p class="twin c3">I</p>
-        <input
-          type="text"
-          id="name"
-          placeholder="DORA MARY ANYANYA AKATU"
-          name="name"
-          class="lg c9 ml-2"
-        />
+        <input type="text" id="name" placeholder="DORA MARY ANYANYA AKATU" name="name" class="lg c9 ml-2" />
         <p class="twin c3">of</p>
       </div>
       <div class="twins mt-2">
-        <input
-          type="text"
-          id="address"
-          placeholder="no. 15 policia street fha, nyanya, abuja"
-          name="address"
-          class="lg c9 ml-2"
-        />
+        <input type="text" id="address" placeholder="no. 15 policia street fha, nyanya, abuja" name="address"
+          class="lg c9 ml-2" />
         <p class="twin c3">do solemly</p>
       </div>
       <p class="mt-2">and Sincerely declare:</p>
       <div class="twins mt-2">
         <p class="twin c3">That I was formerly known and called:</p>
-        <input
-          type="text"
-          id="name2"
-          name="name2"
-          placeholder="DORA MARY ANYANYA"
-          class="lg c9 ml-2"
-        />
+        <input type="text" id="name2" name="name2" placeholder="DORA MARY ANYANYA" class="lg c9 ml-2" />
       </div>
 
       <div class="twins mt-2">
         <p class="twin c3">Henceforth I wish to be known and called:</p>
-        <input
-          type="text"
-          placeholder="DORA MARY ANYANYA AKATU"
-          id="name3"
-          name="name3"
-          class="lg c9 ml-2"
-        />
+        <input type="text" placeholder="DORA MARY ANYANYA AKATU" id="name3" name="name3" class="lg c9 ml-2" />
       </div>
       <p class="mt-2">
         That I am making this solemn declaration conscientiously believing same
@@ -81,13 +50,7 @@
       </div>
       <div class="twins mt-2">
         <p class="twin c3">Sworn to at the</p>
-        <input
-          type="text"
-          id="venue"
-          name="venue"
-          placeholder="high court, maitama"
-          class="lg c9 ml-2"
-        />
+        <input type="text" id="venue" name="venue" placeholder="high court, maitama" class="lg c9 ml-2" />
         <p class="twin c3">Registry</p>
       </div>
 
@@ -95,13 +58,7 @@
         <p>
           This <input type="text" placeholder="5th" id="day" name="day" /> day
           of
-          <input
-            type="text"
-            placeholder="Juuly 2019"
-            id="my"
-            name="my"
-            class=" mt-1 ml-2 c9"
-          />
+          <input type="text" placeholder="Juuly 2019" id="my" name="my" class=" mt-1 ml-2 c9" />
         </p>
       </div>
       <p class="mt-2 mb-2">
@@ -127,26 +84,12 @@
       <div class="footer mt-4">
         <div>
           <div class="form-inline mt-3">
-            <label for="fees" class="mr-sm-2"
-              ><strong>Fees Paid:</strong></label
-            >
-            <input
-              type="fees"
-              class="mb-2 mr-sm-2"
-              id="fees"
-              placeholder="500"
-            />
+            <label for="fees" class="mr-sm-2"><strong>Fees Paid:</strong></label>
+            <input type="fees" class="mb-2 mr-sm-2" id="fees" placeholder="500" />
           </div>
           <div class="form-inline">
-            <label for="teller" class="mr-sm-2"
-              ><strong>Receipt/Bank Teller No:</strong></label
-            >
-            <input
-              type="teller"
-              class="mb-2 mr-sm-2"
-              id="teller"
-              placeholder="11597697"
-            />
+            <label for="teller" class="mr-sm-2"><strong>Receipt/Bank Teller No:</strong></label>
+            <input type="teller" class="mb-2 mr-sm-2" id="teller" placeholder="11597697" />
           </div>
         </div>
         <div class="mt-1 ml-3">
@@ -156,12 +99,7 @@
       </div>
       <div class="form-inline">
         <label for="date" class="mr-sm-2"><strong>Date:</strong></label>
-        <input
-          type="date"
-          class="mb-2 mr-sm-2"
-          id="date"
-          placeholder="08/08/2019"
-        />
+        <input type="date" class="mb-2 mr-sm-2" id="date" placeholder="08/08/2019" />
       </div>
       <div class="d-flex justify-content-end mt-3">
         <div class="oath text-center mr-2">
