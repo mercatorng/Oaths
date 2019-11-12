@@ -15,10 +15,12 @@ import { ToastService } from './../../services/toast.service';
 import { AlertService } from 'src/app/services/alert.service';
 import { interval as observableInterval } from 'rxjs';
 import { takeWhile, scan, tap } from 'rxjs/operators';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-age-declaration',
   templateUrl: './age-declaration.component.html',
-  styleUrls: ['./age-declaration.component.scss']
+  styleUrls: ['./age-declaration.component.scss'],
+  providers: [NgbModalConfig, NgbModal]
 })
 export class AgeDeclarationComponent implements OnInit {
   currentUser: User;
@@ -26,6 +28,7 @@ export class AgeDeclarationComponent implements OnInit {
   ageForm: FormGroup;
   submitted = false;
   loading = false;
+  response: any;
 
   constructor(
     private institutionService: InstitutionService,
@@ -33,9 +36,13 @@ export class AgeDeclarationComponent implements OnInit {
     private dialog: MatDialog,
     private documentService: DocumentService,
     public toastService: ToastService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private modalService: NgbModal,
+    config: NgbModalConfig
   ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser')) as User;
+    config.backdrop = 'static';
+    config.keyboard = false;
   }
 
   ngOnInit() {
@@ -43,10 +50,7 @@ export class AgeDeclarationComponent implements OnInit {
     this.ageForm = this.formBuilder.group({
       name: ['', Validators.required],
       address: ['', Validators.required],
-      age: [
-        '',
-        [Validators.required, Validators.minLength(1), Validators.maxLength(3)]
-      ],
+      age: ['', [Validators.required]],
       dateofBirth: ['', Validators.required],
       dayOfBirth: ['', Validators.required],
       relationship: ['', Validators.required],
@@ -58,7 +62,7 @@ export class AgeDeclarationComponent implements OnInit {
       registeredLocalLGovt: ['', Validators.required],
       registeredState: ['', Validators.required],
 
-      date: ['', Validators.required],
+      date: ['2019-11-11T16:47:37.627Z', Validators.required],
       courtName: ['', Validators.required],
       fromLanguage: ['', Validators.required],
       toLanguage: ['', Validators.required],
@@ -67,6 +71,11 @@ export class AgeDeclarationComponent implements OnInit {
       tellerNumber: [''],
       presentDay: ['', Validators.required],
       presentMonthYear: ['', Validators.required]
+      // documentRef:[''],
+      // isPaid: [''],
+      // dateGenerated: [''],
+      // datePaid: [''],
+      // documentName: ['']
     });
   }
 
@@ -82,7 +91,7 @@ export class AgeDeclarationComponent implements OnInit {
       });
   }
 
-  onSubmit() {
+  onSubmit(modal) {
     this.submitted = true;
     if (this.ageForm.invalid) {
       return;
@@ -91,18 +100,22 @@ export class AgeDeclarationComponent implements OnInit {
     const obj = { ...this.ageForm.value };
     obj.staffId = this.currentUser.id;
     obj.institutionId = this.currentUser.institutionID;
+    console.log(obj);
     this.documentService.saveAgeDeclaration(obj).subscribe(
       res => {
+        this.response = res;
         console.log(res);
         this.loading = false;
-        this.openDialog('Declaration of Age', `Saved Succesfully`);
+        // this.openDialog('Declaration of Age', `Saved Succesfully`);
         this.toastService.show('Saved Succesfully', {
           classname: 'bg-success text-light',
           delay: 10000,
           autohide: true,
           headertext: 'Declaration of Age'
         });
-        this.alertService.success('Success');
+
+        this.open(modal);
+        this.reset();
       },
       error => {
         console.log(error);
@@ -113,6 +126,7 @@ export class AgeDeclarationComponent implements OnInit {
           autohide: true,
           headertext: 'Error!!!'
         });
+        this.openDialog('Declaration of Age', `Failed ${error.statusText}`);
       }
     );
   }
@@ -141,25 +155,7 @@ export class AgeDeclarationComponent implements OnInit {
     });
   }
 
-  findInvalidControlsRecursive(
-    formToInvestigate: FormGroup | FormArray
-  ): string[] {
-    const invalidControls: string[] = [];
-    const recursiveFunc = (form: FormGroup | FormArray) => {
-      Object.keys(form.controls).forEach(field => {
-        const control = form.get(field);
-        if (control.invalid) {
-          invalidControls.push(field);
-        }
-        if (control instanceof FormGroup) {
-          recursiveFunc(control);
-        } else if (control instanceof FormArray) {
-          recursiveFunc(control);
-        }
-      });
-    };
-    recursiveFunc(formToInvestigate);
-    console.log(invalidControls);
-    return invalidControls;
+  open(content) {
+    this.modalService.open(content, { centered: true });
   }
 }
