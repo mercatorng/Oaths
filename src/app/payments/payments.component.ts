@@ -92,6 +92,45 @@ export class PaymentsComponent implements OnInit {
   }
 }
 
+
+
+
+
+
+// this.ageForm = this.formBuilder.group({
+//   id: [0],
+//   name: ['', Validators.required],
+//   address: ['', Validators.required],
+//   age: [
+//     '',
+//     [Validators.required, Validators.minLength(1), Validators.maxLength(3)]
+//   ],
+//   dateofBirth: ['', Validators.required],
+//   dayOfBirth: ['', Validators.required],
+//   relationship: ['', Validators.required],
+//   relativeName: ['', Validators.required],
+//   relativeName2: ['', Validators.required],
+//   birthPlace: ['', Validators.required],
+//   birthState: ['', Validators.required],
+//   birthLocalGovt: ['', Validators.required],
+//   registeredLocalLGovt: ['', Validators.required],
+//   registeredState: ['', Validators.required],
+
+//   date: ['2019-11-11T16:47:37.627Z', Validators.required],
+//   courtName: ['', Validators.required],
+//   fromLanguage: ['', Validators.required],
+//   toLanguage: ['', Validators.required],
+//   interpreter: ['', Validators.required],
+//   amountPaid: ['', Validators.required],
+//   tellerNumber: [''],
+//   presentDay: ['', Validators.required],
+//   presentMonthYear: ['', Validators.required],
+//   // documentRef:[''],
+//   // isPaid: [''],
+//   // dateGenerated: [''],
+//   // datePaid: [''],
+//   // documentName: ['']
+// });
 // searchDocument(){
 //   this.loading=true
 //   this.documentImage=false
