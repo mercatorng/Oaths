@@ -94,80 +94,40 @@ export class PaymentsComponent implements OnInit {
 
 
 
-// searchDocument(){
-  //   this.loading=true
-  //   this.documentImage=false
-  //   this.age=this.marriage=this.name=this.general=false
-  //   if(this.documentType=="Marriage Declaration"){
-  //     this.url="Marriage/GetByID"
-  //   }
-  //   else if(this.documentType=="Age Declaration"){
-  //     this.url="AgeDeclaration/GetByID"
-  //   }
-  //   else if(this.documentType=="Change of Name Declaration"){
-  //     this.url="ChangeofName/GetByID"
-  //   }
-  //   else if(this.documentType=="General Declaration"){
-  //     this.url="GeneralAffidavit/GetByID"
-  //   }
 
-  //   this.documentService.getMarriageAgeNameGeneralById(this.url,this.id).subscribe(data=>{
-  //     this.oathform=<any>data
-  //     this.documentImage=false
-  //     this.loading=false
-  //     if(this.documentType=="Marriage Declaration"){
-  //       this.marriage=true
-  //       this.age=this.name=this.general=false
-  //     }
-  //     else if(this.documentType=="Age Declaration"){
-  //       this.age=true
-  //       this.marriage=this.name=this.general=false
-  //     }
-  //     else if(this.documentType=="Change of Name Declaration"){
-  //       this.name=true
-  //       this.age=this.marriage=this.general=false
-  //     }
-  //     else if(this.documentType=="General Declaration"){
-  //       this.general=true
-  //       this.age=this.name=this.marriage=false
-  //     }
-  //     //console.log(data)
-  //   },
-  //     err=>{
-  //       console.log(err)
-  //     })
-  // }
 
-  // {
-//   "address": "FEDERAL CAPITAL TERRITORY, ABUJA",
-// "age": "18",
-// "amountPaid": 1000,
-// "birthLocalGovt": "ado odo ota",
-// "birthPlace": "agbara",
-// "birthState": "ogun",
-// "courtName": "high court maitama",
-// "date": "2019-11-11",
-// "dateGenerated": "",
-// "datePaid": "",
-// "dateofBirth": "october 2010",
-// "dayOfBirth": "8",
-// "documentName": "",
-// "documentRef": "",
-// "fromLanguage": "english",
-// "id": 0,
-// "institutionId": 1,
-// "interpreter": "adigun",
-// "isPaid": "",
-// "name": "Adigun Ibrahim",
-// "presentDay": "18",
-// "presentMonthYear": "october 2019",
-// "registeredLocalLGovt": "ado odo ota",
-// "registeredState": "ogun state nigeria",
-// "relationship": "father",
-// "relativeName": "adigun mary",
-// "relativeName2": "adigun mary",
-// "staffId": 5,
-// "tellerNumber": "12345",
-// "toLanguage": "hausa"
-// }
 
+// this.ageForm = this.formBuilder.group({
+//   id: [0],
+//   name: ['', Validators.required],
+//   address: ['', Validators.required],
+//   age: [
+//     '',
+//     [Validators.required, Validators.minLength(1), Validators.maxLength(3)]
+//   ],
+//   dateofBirth: ['', Validators.required],
+//   dayOfBirth: ['', Validators.required],
+//   relationship: ['', Validators.required],
+//   relativeName: ['', Validators.required],
+//   relativeName2: ['', Validators.required],
+//   birthPlace: ['', Validators.required],
+//   birthState: ['', Validators.required],
+//   birthLocalGovt: ['', Validators.required],
+//   registeredLocalLGovt: ['', Validators.required],
+//   registeredState: ['', Validators.required],
+
+//   date: ['2019-11-11T16:47:37.627Z', Validators.required],
+//   courtName: ['', Validators.required],
+//   fromLanguage: ['', Validators.required],
+//   toLanguage: ['', Validators.required],
+//   interpreter: ['', Validators.required],
+//   amountPaid: ['', Validators.required],
+//   tellerNumber: [''],
+//   presentDay: ['', Validators.required],
+//   presentMonthYear: ['', Validators.required],
+//   // documentRef:[''],
+//   // isPaid: [''],
+//   // dateGenerated: [''],
+//   // datePaid: [''],
+//   // documentName: ['']
+// });
