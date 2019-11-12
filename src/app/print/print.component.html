@@ -7,13 +7,13 @@
     <form [formGroup]="searchForm" (onSubmit)="getDocument()">
       <div class="form-group mt-4">
 
-        <label for="search">Enter Document Ref No.</label>
-        <input class="form-control mt-2" type="text" placeholder="Document Ref Number" formControlName="search"
+        <label for="search">Enter Affidavit Ref No.</label>
+        <input class="form-control mt-2" type="text" placeholder="Affidavit Ref Number" formControlName="search"
           [ngClass]="{ 'is-invalid': submitted && search.errors }" />
 
       </div>
       <div class="alert alert-danger" *ngIf="search.touched && search.invalid || submitted && search.errors">
-        <div *ngIf="search?.errors.required">Document Reference Number is required</div>
+        <div *ngIf="search?.errors.required">Affidavit Reference Number is required</div>
       </div>
 
       <button type="submit" class="search-btn float-right mb-4" (click)="getDocument()">Find Document</button>
