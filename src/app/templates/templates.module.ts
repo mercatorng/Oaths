@@ -8,6 +8,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastModule } from './../toast/toast.module';
 import { AlertModule } from './../alert/alert.module';
 import { SharedModule } from '../shared/shared.module';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { SharedModule } from '../shared/shared.module';
     ReactiveFormsModule,
     ToastModule,
     AlertModule,
-    SharedModule
+    SharedModule,
+    NgbModule
   ]
 })
 export class TemplatesModule {}
