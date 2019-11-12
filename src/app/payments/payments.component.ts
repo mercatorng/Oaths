@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { DocumentService } from '../services/document.service'
+import { DocumentService } from '../services/document.service';
 import { Payment } from '../models/payment';
-import { FormGroup, FormControl } from '@angular/forms'
+import { FormGroup, FormControl } from '@angular/forms';
 import { User } from '../models/user';
 
 @Component({
@@ -11,35 +11,34 @@ import { User } from '../models/user';
   styleUrls: ['./payments.component.scss']
 })
 export class PaymentsComponent implements OnInit {
-
   id;
   documentType;
   url;
-  marriage=false;
-  name=false;
-  age=false;
-  general=false;
+  marriage = false;
+  name = false;
+  age = false;
+  general = false;
   oathform;
-  showContent=false;
-  documentImage=true;
-  payment:Payment;
-  paymentForm:FormGroup;
-  currentUser:User;
-  loading=false;
+  showContent = false;
+  documentImage = true;
+  payment: Payment;
+  paymentForm: FormGroup;
+  currentUser: User;
+  loading = false;
   refNo;
 
   constructor(
     private modalService: NgbModal,
     private documentService: DocumentService
   ) {
-    this.currentUser=JSON.parse(localStorage.getItem('currentUser'))
-   }
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
     this.paymentForm = new FormGroup({
       id: new FormControl(''),
       institutionID: new FormControl(this.currentUser.institutionID),
-      amount:new FormControl(),
+      amount: new FormControl(),
       method: new FormControl(''),
       datePaid: new FormControl(Date.now()),
       accountId: new FormControl(''),
@@ -56,88 +55,89 @@ export class PaymentsComponent implements OnInit {
         isPaid: new FormControl(''),
         dateGenerated: new FormControl(Date.now())
       })
-    })
+    });
   }
-  
+
   open(content) {
     this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' });
   }
 
-  
-  searchDocument(){
-    this.marriage=false
-    this.loading=true
-    this.documentImage=false
-    this.documentService.getDocumentByRef(this.refNo).subscribe(data=>{
-      this.oathform=<any>data
-      this.documentImage=false
-      this.loading=false
-      this.marriage=true
-      console.log(data)
-    },
-      err=>{
-        console.log(err)
-      })
+  searchDocument() {
+    this.marriage = false;
+    this.loading = true;
+    this.documentImage = false;
+    this.documentService.getDocumentByRef(this.refNo).subscribe(
+      data => {
+        this.oathform = data as any;
+        this.documentImage = false;
+        this.loading = false;
+        this.marriage = true;
+        console.log(data);
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 
-  confirmPayment(){
-    if(this.paymentForm.value.amount==this.oathform.amountPaid || this.paymentForm.value.amount>this.oathform.amountPaid){
-      this.paymentForm.value.paymentCode.isPaid=true
+  confirmPayment() {
+    if (
+      this.paymentForm.value.amount == this.oathform.amountPaid ||
+      this.paymentForm.value.amount > this.oathform.amountPaid
+    ) {
+      this.paymentForm.value.paymentCode.isPaid = true;
     }
-    this.paymentForm.value.paymentCode.documentRef=this.oathform.documentRef
-    this.paymentForm.value.paymentCode.documentId=this.oathform.id
-    console.log(this.paymentForm.value)
+    this.paymentForm.value.paymentCode.documentRef = this.oathform.documentRef;
+    this.paymentForm.value.paymentCode.documentId = this.oathform.id;
+    console.log(this.paymentForm.value);
   }
-
 }
 
-
-
 // searchDocument(){
-  //   this.loading=true
-  //   this.documentImage=false
-  //   this.age=this.marriage=this.name=this.general=false
-  //   if(this.documentType=="Marriage Declaration"){
-  //     this.url="Marriage/GetByID"
-  //   }
-  //   else if(this.documentType=="Age Declaration"){
-  //     this.url="AgeDeclaration/GetByID"
-  //   }
-  //   else if(this.documentType=="Change of Name Declaration"){
-  //     this.url="ChangeofName/GetByID"
-  //   }
-  //   else if(this.documentType=="General Declaration"){
-  //     this.url="GeneralAffidavit/GetByID"
-  //   }
+//   this.loading=true
+//   this.documentImage=false
+//   this.age=this.marriage=this.name=this.general=false
+//   if(this.documentType=="Marriage Declaration"){
+//     this.url="Marriage/GetByID"
+//   }
+//   else if(this.documentType=="Age Declaration"){
+//     this.url="AgeDeclaration/GetByID"
+//   }
+//   else if(this.documentType=="Change of Name Declaration"){
+//     this.url="ChangeofName/GetByID"
+//   }
+//   else if(this.documentType=="General Declaration"){
+//     this.url="GeneralAffidavit/GetByID"
+//   }
 
-  //   this.documentService.getMarriageAgeNameGeneralById(this.url,this.id).subscribe(data=>{
-  //     this.oathform=<any>data
-  //     this.documentImage=false
-  //     this.loading=false
-  //     if(this.documentType=="Marriage Declaration"){
-  //       this.marriage=true
-  //       this.age=this.name=this.general=false
-  //     }
-  //     else if(this.documentType=="Age Declaration"){
-  //       this.age=true
-  //       this.marriage=this.name=this.general=false
-  //     }
-  //     else if(this.documentType=="Change of Name Declaration"){
-  //       this.name=true
-  //       this.age=this.marriage=this.general=false
-  //     }
-  //     else if(this.documentType=="General Declaration"){
-  //       this.general=true
-  //       this.age=this.name=this.marriage=false
-  //     }
-  //     //console.log(data)
-  //   },
-  //     err=>{
-  //       console.log(err)
-  //     })
-  // }
+//   this.documentService.getMarriageAgeNameGeneralById(this.url,this.id).subscribe(data=>{
+//     this.oathform=<any>data
+//     this.documentImage=false
+//     this.loading=false
+//     if(this.documentType=="Marriage Declaration"){
+//       this.marriage=true
+//       this.age=this.name=this.general=false
+//     }
+//     else if(this.documentType=="Age Declaration"){
+//       this.age=true
+//       this.marriage=this.name=this.general=false
+//     }
+//     else if(this.documentType=="Change of Name Declaration"){
+//       this.name=true
+//       this.age=this.marriage=this.general=false
+//     }
+//     else if(this.documentType=="General Declaration"){
+//       this.general=true
+//       this.age=this.name=this.marriage=false
+//     }
+//     //console.log(data)
+//   },
+//     err=>{
+//       console.log(err)
+//     })
+// }
 
-  // {
+// {
 //   "address": "FEDERAL CAPITAL TERRITORY, ABUJA",
 // "age": "18",
 // "amountPaid": 1000,
@@ -169,4 +169,3 @@ export class PaymentsComponent implements OnInit {
 // "tellerNumber": "12345",
 // "toLanguage": "hausa"
 // }
-
