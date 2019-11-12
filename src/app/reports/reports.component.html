@@ -49,7 +49,7 @@
           <th class="index">Ref No.</th>
           <th style="text-align: center; font-weight:bold">Affidavit Type</th>
           <th style="text-align: center; font-weight:bold">Status</th>
-          <th style="text-align: center; font-weight:bold">Staff</th>
+          <!-- <th style="text-align: center; font-weight:bold">Staff</th> -->
           <th style="text-align: center; font-weight:bold">Date</th>
         </tr>
       </thead>
@@ -61,7 +61,7 @@
           </td>
           <td class="index" *ngIf="report.isPaid">Paid</td>
           <td class="index" *ngIf="!report.isPaid">Unpaid</td>
-          <td class="index">{{ report.staff }}</td>
+          <!-- <td class="index">{{ report.staff }}</td> -->
           <td class="index">{{ getDate(report.dateGenerated) }}</td>
         </tr>
       </tbody>
