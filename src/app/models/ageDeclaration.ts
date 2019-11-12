@@ -11,7 +11,6 @@ export class AgeDeclaration {
   birthLocalGovt: string;
   registeredLocalGovt: string;
   registeredState: string;
-
   date: string;
   courtName: string;
   fromLanguage: string;
@@ -20,4 +19,9 @@ export class AgeDeclaration {
   amountPaid: number;
   tellerNumber: string;
   institutionId: number;
+  documentRef: string;
+  isPaid: true;
+  dateGenerated: string;
+  datePaid: string;
+  documentName: string;
 }

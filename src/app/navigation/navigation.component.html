@@ -20,7 +20,7 @@
         </mat-card-header>
       </mat-card>
       <mat-list-item>
-        <button class="menu-item" mat-flat-button routerLink="/navigation/dashboard">
+        <button class="menu-item" mat-flat-button routerLink="/navigation/dashboard" routerLinkActive="active">
           <mat-icon>dashboard</mat-icon>
           Dashboard
         </button>
@@ -37,19 +37,19 @@
         </button>
       </mat-list-item>
       <mat-list-item *ngIf="open">
-        <button routerLink="createuser" class="menu-item" mat-flat-button>
+        <button routerLink="createuser" routerLinkActive="active" class="menu-item" mat-flat-button>
           <mat-icon class="routeIcon">group</mat-icon>
           Create User
         </button>
       </mat-list-item>
       <mat-list-item *ngIf="open">
-        <button routerLink="roles" class="menu-item" mat-flat-button>
+        <button routerLink="roles" routerLinkActive="active" class="menu-item" mat-flat-button>
           <mat-icon class="routeIcon">group</mat-icon>
           Roles
         </button>
       </mat-list-item>
       <mat-list-item *ngIf="open">
-        <button routerLink="institution" class="menu-item" mat-flat-button>
+        <button routerLink="institution" routerLinkActive="active" class="menu-item" mat-flat-button>
           <mat-icon class="routeIcon">location_city</mat-icon>
           Institution
         </button>
@@ -70,28 +70,28 @@
         </button>
       </mat-list-item>
       <mat-list-item *ngIf="expanded">
-        <button routerLink="/navigation/document" class="menu-item" mat-flat-button>
+        <button routerLink="/navigation/document" routerLinkActive="active" class="menu-item" mat-flat-button>
           <mat-icon class="routeIcon">recent_actors</mat-icon>
           Declaration of Age
         </button>
 
       </mat-list-item>
       <mat-list-item *ngIf="expanded">
-        <button routerLink="/navigation/marriage" class="menu-item" mat-flat-button>
+        <button routerLink="/navigation/marriage" routerLinkActive="active" class="menu-item" mat-flat-button>
           <mat-icon class="routeIcon">recent_actors</mat-icon>
           Declaration of Marriage
         </button>
 
       </mat-list-item>
       <mat-list-item *ngIf="expanded">
-        <button routerLink="/navigation/change-of-name" class="menu-item" mat-flat-button>
+        <button routerLink="/navigation/change-of-name" routerLinkActive="active" class="menu-item" mat-flat-button>
           <mat-icon class="routeIcon">recent_actors</mat-icon>
           Change of Name
         </button>
 
       </mat-list-item>
       <mat-list-item *ngIf="expanded">
-        <button routerLink="/navigation/general" class="menu-item" mat-flat-button>
+        <button routerLink="/navigation/general" routerLinkActive="active" class="menu-item" mat-flat-button>
           <mat-icon class="routeIcon">recent_actors</mat-icon>
           General Form of Affidavit
         </button>
@@ -101,6 +101,12 @@
         <button class="menu-item" mat-flat-button routerLink="/navigation/payments">
           <mat-icon>local_atm</mat-icon>
           Payments
+        </button>
+      </mat-list-item>
+      <mat-list-item routerLink="print">
+        <button class="menu-item" mat-flat-button>
+          <mat-icon>file_copy</mat-icon>
+          Print
         </button>
       </mat-list-item>
       <mat-list-item routerLink="reports">
