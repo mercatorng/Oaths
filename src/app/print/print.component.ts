@@ -40,7 +40,7 @@ export class PrintComponent implements OnInit {
   }
 
   getDocument() {
-    console.log(this.searchForm.value);
+    console.log(this.searchForm.get('search').value);
     this.submitted = true;
     if (this.searchForm.invalid) {
       return;
