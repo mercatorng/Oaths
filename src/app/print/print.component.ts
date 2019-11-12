@@ -238,4 +238,5 @@ export class PrintComponent implements OnInit {
     <body onload="window.print();window.close()">${printContent}</body>
       </html>`);
   }
+  // /njwdw
 }
