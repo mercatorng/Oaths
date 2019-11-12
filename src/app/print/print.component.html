@@ -23,3 +23,8 @@
   </div>
 
 </div>
+
+<div *ngIf="affidavit" id="affidavit">
+  <app-age-affidavit [affidavit]="affidavit"></app-age-affidavit>
+  <button type="button" class="search-btn mt-4 mb-4 float-right mr-4" (click)="print()">Print</button>
+</div>
