@@ -88,7 +88,6 @@ export class PaymentsComponent implements OnInit {
   }
 }
 
-<<<<<<< HEAD
 
 
 
@@ -128,7 +127,6 @@ export class PaymentsComponent implements OnInit {
 //   // datePaid: [''],
 //   // documentName: ['']
 // });
-=======
 // searchDocument(){
 //   this.loading=true
 //   this.documentImage=false
@@ -205,4 +203,3 @@ export class PaymentsComponent implements OnInit {
 // "tellerNumber": "12345",
 // "toLanguage": "hausa"
 // }
->>>>>>> 74919f32b38de201671985d4c4a3fc4c0e4bbf6b
