@@ -12,10 +12,10 @@ body {
   background: #fff;
   border-radius: 2px;
   padding: 5px 10px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.6);
-  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.6);
-  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.6);
-  -o-box-shadow: 0 0 10px rgba(0,0,0,0.6)
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  -o-box-shadow: 0 0 10px rgba(0, 0, 0, 0.6)
 }
 
 .paper::before,
@@ -56,8 +56,7 @@ body {
 .header {
   margin: 15px;
   display: flex;
-  justify-content: center;
-
+  justify-content: space-evenly;
 }
 
 .header img {
@@ -169,6 +168,7 @@ input.signature2 {
   word-spacing: 2px;
   padding: 10px;
 }
-.modal-body{
+
+.modal-body {
   margin-top: -150px !important;
 }
