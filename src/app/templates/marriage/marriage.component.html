@@ -148,7 +148,7 @@
           </span>
           registry
           this
-          <input type="text" placeholder="8th" class="mt-2" formControlName="presentDay" />
+          <input type="number" placeholder="8th" class="mt-2" formControlName="presentDay" />
           <span *ngIf="(f?.presentDay.touched && f?.presentDay.invalid) || (submitted && f.presentDay.errors)"
             class="alert alert-danger">
             <small *ngIf="f?.presentDay.errors.required">Day is required</small>
