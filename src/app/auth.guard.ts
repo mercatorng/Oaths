@@ -12,12 +12,12 @@ export class AuthGuard implements CanActivate {
   canActivate(route:ActivatedRouteSnapshot){
     this.currentUser=<User> JSON.parse(localStorage.getItem("currentUser"))
     this.privilege = this.currentUser.role.privileges.find(x=>{return x.name==route.data.title})
-            if(this.privilege.read==true){
-                return true
-            }
-            else{
-                return false
-            }
-            //return true
+            // if(this.privilege.read==true){
+            //     return true
+            // }
+            // else{
+            //     return false
+            // }
+            return true
   }
 }
