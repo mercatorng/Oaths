@@ -50,7 +50,7 @@
 .header {
   margin: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
 
 }
 
@@ -78,7 +78,10 @@
 }
 
 
-
+.thumb {
+  display: flex;
+  flex-direction: column-reverse;
+}
 
 
 .declaration p {
