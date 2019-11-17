@@ -51,7 +51,7 @@ export class PrintComponent implements OnInit {
       res => {
         this.affidavit = res;
         console.log(res);
-        this.openDialog('Court Affidavit', res.message);
+        this.openDialog('Court Affidavit', res['message']);
         this.loading = false;
       },
       error => {

@@ -45,6 +45,6 @@
 
 <div *ngIf="affidavit && affidavit.documentName ==='AFFIDAVIT OF CHANGE OF NAME'" id="affidavit">
     <app-name-affidavit [affidavit]="affidavit"></app-name-affidavit>
-    <button type="button" class="search-btn mt-4 mb-4 float-right mr-4" (click)="print()">Print</button>
+    <button type="button" class="search-btn mt-4 mb-4 float-right mr-4" (click)="print('affidavit')">Print</button>
 </div>
 
