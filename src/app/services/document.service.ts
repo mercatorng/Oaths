@@ -36,4 +36,16 @@ export class DocumentService {
   getDocumentByRef(refNo){
     return this.http.get(`${this.url}/Document/GetByDocumentRef/${refNo}`)
   }
+
+  saveDocumentType(obj){
+    return this.http.post(`${this.url}/DocumentType/Save`,obj)
+  }
+
+  getDocumentTypesByInstitution(id){
+    return this.http.get(`${this.url}/DocumentType/GetByInstitution/${id}`)
+  }
+
+  updateDocumentType(obj){
+    return this.http.post(`${this.url}/DocumentType/Update`,obj)
+  }
 }

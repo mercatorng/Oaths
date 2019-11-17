@@ -40,6 +40,7 @@ export class PrintComponent implements OnInit {
   }
 
   getDocument() {
+
     this.submitted = true;
     if (this.searchForm.invalid) {
       return;
@@ -59,6 +60,27 @@ export class PrintComponent implements OnInit {
         this.openDialog('Court Affidavit', `Failed ${error.statusText}`);
       }
     );
+
+    console.log(this.searchForm.get("search").value);
+    // this.submitted = true;
+    // if (this.searchForm.invalid) {
+    //   return;
+    // }
+    // this.loading = true;
+    // this.documentService.getDocumentByRef(this.searchForm.value).subscribe(
+    //   res => {
+    //     this.affidavit = res;
+    //     console.log(this.searchForm.value);
+    //     this.openDialog('Court Affidavit', `Success`);
+    //     this.loading = false;
+    //   },
+    //   error => {
+    //     this.loading = false;
+    //     this.alertService.error(`Error: ${error.statustext}`);
+    //     this.openDialog('Court Affidavit', `Failed ${error.statusText}`);
+    //   }
+    // );
+
   }
 
   print() {
