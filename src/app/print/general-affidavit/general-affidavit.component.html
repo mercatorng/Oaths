@@ -51,7 +51,7 @@
 
       <div class="twins mt-2">
         <div class="form-inline mr-2 c3">
-          <p>Date: {{affidavit.date}}
+          <p>Date: {{affidavit.date | date: 'dd/MM/yyyy'}}
           </p>
         </div>
         <div class="text-center c9 declarant ">
@@ -59,21 +59,21 @@
           <p>DEPONENT</p>
         </div>
       </div>
-      
-        <p >Sworn to at the {{affidavit.courtName}}
 
-          Registry,
-      
+      <p>Sworn to at the {{affidavit.courtName}}
 
+        Registry,
 
 
-      
-          This {{affidavit.presentDay}}<sup class="text-lowercase">th</sup> day
-          of {{affidavit.presentMonthYear}}
 
 
-        </p>
-      
+
+        This {{affidavit.presentDay}}<sup class="text-lowercase">th</sup> day
+        of {{affidavit.presentMonthYear}}
+
+
+      </p>
+
       <p class="mt-2 mb-2">
         The foregoing has been read over and interpreted by the declarant from {{affidavit.fromLanguage}}
 
@@ -101,7 +101,7 @@
         </div>
       </div>
       <div class="form-inline">
-        <label for="date" class="mr-sm-2"><strong>Date: {{affidavit.date}}</strong></label>
+        <label for="date" class="mr-sm-2"><strong>Date: {{affidavit.date | date: 'dd/MM/yyyy'}}</strong></label>
 
       </div>
 
