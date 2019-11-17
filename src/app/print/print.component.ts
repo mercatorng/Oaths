@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
 import { AlertService } from '../services/alert.service';
 import { Print } from '../util/print';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-print',
@@ -17,12 +18,15 @@ export class PrintComponent implements OnInit {
   loading = false;
   submitted = false;
   affidavit: any;
+  currentUser: User;
 
   constructor(
     private documentService: DocumentService,
     private dialog: MatDialog,
     private alertService: AlertService
-  ) {}
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')) as User;
+  }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -51,7 +55,7 @@ export class PrintComponent implements OnInit {
       res => {
         this.affidavit = res;
         console.log(res);
-        this.openDialog('Court Affidavit', res.message);
+        this.openDialog('Court Affidavit', res['message']);
         this.loading = false;
       },
       error => {
@@ -85,7 +89,7 @@ export class PrintComponent implements OnInit {
   print(id) {
     Print.printDocument(id);
     this.documentService
-      .updatePrint(this.affidavit.affidavitReferenceNumber)
+      .updatePrint(this.affidavit.affidavitReferenceNumber, this.currentUser.id)
       .subscribe(res => console.log(res));
   }
 }
