@@ -50,6 +50,6 @@ export class DocumentService {
   }
 
   updatePrint(obj) {
-    return this.http.post(`${this.url}/Document/UpatePrintTime/`, obj);
+    return this.http.post(`${this.url}/Document/UpdatePrintTime`, obj);
   }
 }
