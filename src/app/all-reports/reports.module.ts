@@ -4,9 +4,10 @@ import { TransactionReportComponent } from './transaction-report/transaction-rep
 import { ReportsComponent } from './reports/reports.component';
 import { ChartsModule } from 'ng2-charts';
 import { AlertModule } from '../alert/alert.module';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @NgModule({
   declarations: [TransactionReportComponent, ReportsComponent],
-  imports: [CommonModule, ChartsModule, AlertModule]
+  imports: [CommonModule, ChartsModule, AlertModule, NgxPaginationModule]
 })
 export class ReportsModule {}
