@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { Subscription } from 'rxjs';
 import { LoginService } from '../services/login.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { FormGroup, FormControl, Validators } from '@angular/forms'
 
 @Component({
   selector: 'app-navigation',
@@ -34,6 +36,8 @@ export class NavigationComponent implements OnInit {
   drop = false;
   user: User;
   currentUserSubscription: Subscription;
+  changePasswordForm:FormGroup;
+  submitted=false;
 
   navItems = [
     {
@@ -65,7 +69,10 @@ export class NavigationComponent implements OnInit {
     }
   ];
 
-  constructor(public router: Router, private loginService: LoginService) {
+  constructor(public router: Router, 
+    private loginService: LoginService,
+    private modalService: NgbModal
+  ) {
     this.currentUserSubscription = this.loginService.currentUser.subscribe(
       user => {
         this.user = user;
@@ -74,6 +81,10 @@ export class NavigationComponent implements OnInit {
   }
   ngOnInit() {
     console.log(this.user);
+    this.changePasswordForm = new FormGroup({
+      oldPassword: new FormControl(null,Validators.required),
+      newPassword: new FormControl(null,Validators.required)
+    })
   }
 
   ngOnDestroy() {
@@ -112,5 +123,17 @@ export class NavigationComponent implements OnInit {
   logOut() {
     this.loginService.logout();
     this.router.navigate(['/login']);
+  }
+
+  openModal(content){
+    this.modalService.open(content)
+  }
+
+  changePassword(){
+    this.submitted=true
+    if(this.changePasswordForm.valid){
+      console.log(this.changePasswordForm.value)
+    }
+
   }
 }
