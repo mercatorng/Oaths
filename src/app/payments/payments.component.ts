@@ -68,6 +68,7 @@ export class PaymentsComponent implements OnInit {
         this.documentImage = false;
         this.loading = false;
         this.marriage = true;
+        console.log(this.oathform);
       },
       err => {
         console.log(err);
@@ -75,21 +76,21 @@ export class PaymentsComponent implements OnInit {
     );
   }
 
-  confirmPayment() {
-    this.paymentForm.value.documentRef = this.oathform.documentRef;
-    this.paymentForm.value.documentID = this.oathform.id;
-    this.paymentForm.value.payerName = this.oathform.name;
-    // console.log(this.paymentForm.value)
-    this.paymentService.savePayment(this.paymentForm.value).subscribe(
-      data => {
-        this.modalService.dismissAll();
-        Swal.fire("Payment Succesful");
-      },
-      err => {
-        console.log(err);
-      }
-    );
-  }
+  // confirmPayment() {
+  //   this.paymentForm.value.documentRef = this.oathform.documentRef;
+  //   this.paymentForm.value.documentID = this.oathform.id;
+  //   this.paymentForm.value.payerName = this.oathform.name;
+  //   // console.log(this.paymentForm.value)
+  //   this.paymentService.savePayment(this.paymentForm.value).subscribe(
+  //     data => {
+  //       this.modalService.dismissAll();
+  //       Swal.fire("Payment Succesful");
+  //     },
+  //     err => {
+  //       console.log(err);
+  //     }
+  //   );
+  // }
 }
 
 
