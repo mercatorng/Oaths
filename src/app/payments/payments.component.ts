@@ -6,6 +6,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { User } from "../models/user";
 import { PaymentService } from "../services/payment.service";
 import Swal from "sweetalert2";
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: "app-payments",
@@ -29,11 +30,13 @@ export class PaymentsComponent implements OnInit {
   loading = false;
   refNo;
   payerName;
+  users:User[];
 
   constructor(
     private modalService: NgbModal,
     private documentService: DocumentService,
-    private paymentService: PaymentService
+    private paymentService: PaymentService,
+    private loginService: LoginService
   ) {
     this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
   }
@@ -52,6 +55,7 @@ export class PaymentsComponent implements OnInit {
       documentID: new FormControl(""),
       payerName: new FormControl("")
     });
+    this.getUsers()
   }
 
   open(content) {
@@ -75,6 +79,18 @@ export class PaymentsComponent implements OnInit {
       }
     );
   }
+
+  getUsers(){
+    this.loginService.getUsers(this.currentUser.institutionID).subscribe(data=>{
+      this.users=<User[]>data
+    })
+  }
+
+  getUserName(id){
+    let user = this.users.find(x=>{return x.id==id})
+    return `${user.firstName} ${user.lastName}`
+  }
+
 
   // confirmPayment() {
   //   this.paymentForm.value.documentRef = this.oathform.documentRef;

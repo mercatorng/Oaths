@@ -38,6 +38,7 @@ export class NavigationComponent implements OnInit {
   currentUserSubscription: Subscription;
   changePasswordForm:FormGroup;
   submitted=false;
+  currentUser;
 
   navItems = [
     {
@@ -78,11 +79,12 @@ export class NavigationComponent implements OnInit {
         this.user = user;
       }
     );
+    this.currentUser = JSON.parse(localStorage.getItem("currentUser"));
   }
   ngOnInit() {
     console.log(this.user);
     this.changePasswordForm = new FormGroup({
-      oldPassword: new FormControl(null,Validators.required),
+      oldPassword: new FormControl(null),
       newPassword: new FormControl(null,Validators.required)
     })
   }
@@ -132,8 +134,12 @@ export class NavigationComponent implements OnInit {
   changePassword(){
     this.submitted=true
     if(this.changePasswordForm.valid){
+      this.currentUser.Password=this.changePasswordForm.value.newPassword
       console.log(this.changePasswordForm.value)
+      console.log(this.currentUser)
+      this.loginService.updateUser(this.currentUser).subscribe(data=>{
+        console.log(data)
+      })
     }
-
   }
 }

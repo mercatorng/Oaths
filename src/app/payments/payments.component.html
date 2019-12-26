@@ -40,7 +40,7 @@
         <h3>Name: <span class="normal">{{oathform.name | uppercase}}</span></h3>
         <h3>Date Generated: <span class="normal">{{oathform.dateGenerated.split('T')[0]}}</span></h3>
         <h3>Date Printed: <span class="normal">{{oathform.printedTime.split('T')[0]}}</span></h3>
-        <h3>Printed By: <span class="normal">{{oathform.staffId}}</span></h3>
+        <h3>Printed By: <span class="normal">{{getUser(oathform.staffId)}}</span></h3>
 
     </div>
     <!-- <div style="margin:0 auto; width:300px">
