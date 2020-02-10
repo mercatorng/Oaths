@@ -13,13 +13,14 @@ import { RolesComponent } from './roles/roles.component';
 import { AddrolesComponent } from './addroles/addroles.component';
 import { CreateuserComponent } from './createuser/createuser.component';
 import { InstitutionComponent } from './institution/institution.component';
-import { ReportsComponent } from './reports/reports.component';
+import { ReportsComponent } from './all-reports/reports/reports.component';
 import { PaymentsComponent } from './payments/payments.component';
 import { PrintComponent } from './print/print.component';
-//import { AuthGuard } from './util/auth.guard';
-import {AuthGuard} from './auth.guard'
+// import { AuthGuard } from './util/auth.guard';
+import { AuthGuard } from './auth.guard';
 import { CreateDocumentComponent } from './create-document/create-document.component';
-
+import { ChartsComponent } from './charts/charts.component';
+import { TransactionReportComponent } from './all-reports/transaction-report/transaction-report.component';
 
 const routes: Routes = [
   {
@@ -41,81 +42,88 @@ const routes: Routes = [
       {
         path: 'dashboard',
         component: DashboardComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Dashboard', read:true },
+        canActivate: [AuthGuard],
+        data: { title: 'Dashboard', read: true }
       },
       {
         path: 'document',
         component: AgeDeclarationComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Declaration of Age', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Declaration of Age', read: true }
       },
       {
         path: 'marriage',
         component: MarriageComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Declaration of Marriage', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Declaration of Marriage', read: true }
       },
       {
         path: 'change-of-name',
         component: NameChangeComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Change of Name', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Change of Name', read: true }
       },
       {
         path: 'general',
         component: GeneralFormComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'General form of Affidavit', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'General form of Affidavit', read: true }
       },
       {
         path: 'roles',
         component: RolesComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Roles', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Roles', read: true }
       },
       {
         path: 'addroles',
         component: AddrolesComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Addroles Component', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Addroles Component', read: true }
       },
       {
         path: 'createuser',
         component: CreateuserComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Create User', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Create User', read: true }
       },
       {
         path: 'institution',
         component: InstitutionComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Institution', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Institution', read: true }
       },
       {
         path: 'reports',
         component: ReportsComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Reports', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Reports', read: true }
+      },
+      {
+        path: 'transaction-reports',
+        component: TransactionReportComponent,
+        canActivate: [AuthGuard],
+        data: { title: 'Reports', read: true }
       },
       {
         path: 'payments',
         component: PaymentsComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Payments', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Payments', read: true }
       },
       {
         path: 'print',
         component: PrintComponent,
-        canActivate:[AuthGuard],
-        data: { title: 'Print', read:true }
+        canActivate: [AuthGuard],
+        data: { title: 'Print', read: true }
       },
       {
         path: 'createdocument',
         component: CreateDocumentComponent,
-        //canActivate:[AuthGuard],
-        data: { title: 'Create Document', read:true }
+        // canActivate:[AuthGuard],
+        data: { title: 'Create Document', read: true }
       },
+
       { path: '**', redirectTo: '' }
     ]
   }

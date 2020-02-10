@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatDialogComponent } from '../mat-dialog/mat-dialog.component';
 import { AlertService } from '../services/alert.service';
 import { Print } from '../util/print';
+import { User } from '../models/user';
 
 @Component({
   selector: 'app-print',
@@ -17,12 +18,15 @@ export class PrintComponent implements OnInit {
   loading = false;
   submitted = false;
   affidavit: any;
+  currentUser: User;
 
   constructor(
     private documentService: DocumentService,
     private dialog: MatDialog,
     private alertService: AlertService
-  ) {}
+  ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser')) as User;
+  }
 
   ngOnInit() {
     this.searchForm = new FormGroup({
@@ -50,7 +54,6 @@ export class PrintComponent implements OnInit {
     this.documentService.getDocumentByRef(num).subscribe(
       res => {
         this.affidavit = res;
-        console.log(res);
         this.openDialog('Court Affidavit', res['message']);
         this.loading = false;
       },
@@ -60,32 +63,15 @@ export class PrintComponent implements OnInit {
         this.openDialog('Court Affidavit', `Failed ${error.statusText}`);
       }
     );
-
-    console.log(this.searchForm.get('search').value);
-    // this.submitted = true;
-    // if (this.searchForm.invalid) {
-    //   return;
-    // }
-    // this.loading = true;
-    // this.documentService.getDocumentByRef(this.searchForm.value).subscribe(
-    //   res => {
-    //     this.affidavit = res;
-    //     console.log(this.searchForm.value);
-    //     this.openDialog('Court Affidavit', `Success`);
-    //     this.loading = false;
-    //   },
-    //   error => {
-    //     this.loading = false;
-    //     this.alertService.error(`Error: ${error.statustext}`);
-    //     this.openDialog('Court Affidavit', `Failed ${error.statusText}`);
-    //   }
-    // );
   }
 
   print(id) {
+    const obj = {
+      documentRef: this.affidavit.documentRef,
+      printedBy: this.currentUser.id
+    };
+    console.log(obj);
     Print.printDocument(id);
-    this.documentService
-      .updatePrint(this.affidavit.affidavitReferenceNumber)
-      .subscribe(res => console.log(res));
+    this.documentService.updatePrint(obj).subscribe(res => console.log(res));
   }
 }
