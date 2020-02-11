@@ -134,4 +134,6 @@ export class NameChangeComponent implements OnInit {
   open(content) {
     this.modalService.open(content, { centered: true });
   }
+
+  onPrint(a){}
 }

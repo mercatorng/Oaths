@@ -91,6 +91,10 @@ export class PaymentsComponent implements OnInit {
     return `${user.firstName} ${user.lastName}`
   }
 
+  getUser(a){
+    return null
+  }
+
 
   // confirmPayment() {
   //   this.paymentForm.value.documentRef = this.oathform.documentRef;

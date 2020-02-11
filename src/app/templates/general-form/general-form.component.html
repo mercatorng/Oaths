@@ -94,7 +94,8 @@
           <small *ngIf="f.line5?.errors.required">Statement is required</small>
         </div>
         </li>
-        <ng-container formArrayName="line" *ngFor="let item of generalForm.get('line').controls; let i = index;">
+        <!-- <ng-container formArrayName="line" *ngFor="let item of generalForm.get('line').controls; let i = index;"> -->
+        <ng-container formArrayName="line" *ngFor="let item of generalForm.get('line')['controls']; let i = index;">
           <li [formGroupName]="i">
               <div class="twins mt-2">
                 <p class="twin c3">That</p>
