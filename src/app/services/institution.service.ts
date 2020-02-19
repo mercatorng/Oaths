@@ -6,7 +6,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InstitutionService {
 
-  url = 'https://mercatoroathapi.azurewebsites.net/api';
+  // url = 'https://mercatoroathapi.azurewebsites.net/api';
+  url = 'https://affidavitdemoapi.azurewebsites.net/api';
   constructor(
     private httpClient:HttpClient
   ) { }

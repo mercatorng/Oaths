@@ -10,7 +10,8 @@ import { GeneralAffidavit } from '../models/generalAffidavit';
 })
 export class DocumentService {
   // baseUrl = environment.baseUrl;
-  url = 'https://mercatoroathapi.azurewebsites.net/api';
+  // url = 'https://mercatoroathapi.azurewebsites.net/api';
+  url = 'https://affidavitdemoapi.azurewebsites.net/api'
 
   constructor(private http: HttpClient) {}
 

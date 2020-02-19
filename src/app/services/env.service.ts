@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class EnvService {
 
   // API url
-  public apiUrl = 'https://mercatoroathapi.azurewebsites.net/api';
+  // public apiUrl = 'https://mercatoroathapi.azurewebsites.net/api';
+  public apiUrl = 'https://affidavitdemoapi.azurewebsites.net/api';
 
   // Whether or not to enable debug mode
   public enableDebug = true;

@@ -5,7 +5,8 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class PaymentService {
-  url = 'https://mercatoroathapi.azurewebsites.net/api';
+  // url = 'https://mercatoroathapi.azurewebsites.net/api';
+  url = 'https://affidavitdemoapi.azurewebsites.net/api';
 
   constructor(
     private httpClient: HttpClient

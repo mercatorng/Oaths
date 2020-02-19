@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://mercatoroathapi.azurewebsites.net/api'
+  // baseUrl: 'https://mercatoroathapi.azurewebsites.net/api'
+  baseUrl: 'https://affidavitdemoapi.azurewebsites.net/api'
 };
 
 /*

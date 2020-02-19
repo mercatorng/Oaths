@@ -14,7 +14,8 @@ export class LoginService {
   public currentUser: Observable<User>;
   private env: EnvService;
   // baseUrl = environment.baseUrl;
-  url = 'https://mercatoroathapi.azurewebsites.net/api';
+  // url = 'https://mercatoroathapi.azurewebsites.net/api';
+  url = 'https://affidavitdemoapi.azurewebsites.net/api'
   constructor(private httpClient: HttpClient) {
     this.currentUserSubject = new BehaviorSubject<User>(
       JSON.parse(localStorage.getItem('currentUser'))
