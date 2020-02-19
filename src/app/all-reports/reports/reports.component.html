@@ -41,8 +41,9 @@
           <td style="text-align: center">₦{{ report.amount }}</td>
           <td class="index" *ngIf="report.isPaid"><span class="paid">Paid</span></td>
           <td class="index" *ngIf="!report.isPaid"><span class="unpaid">Unpaid</span></td>
-          <td class="index">{{ getDate(report.dateGenerated) }}</td>
-          <td class="index">{{ getDate(report.dateGenerated) }}</td>
+          <td class="index" *ngIf="report.isPaid">{{ getDate(report.dateGenerated) }}</td>
+          <td class="index" *ngIf="!report.isPaid">--</td>
+          <td class="index">--</td>
           <td><button class="btn btn-outline-primary" (click)="viewAffidavit(report.arn)">View</button></td>
         </tr>
     </table>
