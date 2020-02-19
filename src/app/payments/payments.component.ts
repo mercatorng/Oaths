@@ -72,10 +72,15 @@ export class PaymentsComponent implements OnInit {
         this.documentImage = false;
         this.loading = false;
         this.marriage = true;
-        console.log(this.oathform);
       },
       err => {
         console.log(err);
+        this.loading = false
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Affidavit with reference number ${this.refNo} does not exist`,
+        })
       }
     );
   }
